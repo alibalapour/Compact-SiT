@@ -5,7 +5,7 @@ This repository contains the official PyTorch self-supervised pretraining, finet
 The training strategy is adopted from main [SiT Repository](https://github.com/Sara-Ahmed/SiT) 
 
 
-> pip install -r requirements.txt
+> pip install --upgrade -r requirements.txt
 
 
 # Self-supervised pre-training
