@@ -1,6 +1,7 @@
 import os
 import gdown
 import shutil
+import gdown
 
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
@@ -59,7 +60,8 @@ def build_dataset(is_train, args):
     elif args.dataset == 'UH_mini':         # Mini Dataset for SSL  - ~120k
         if is_train:
             path = os.path.join(args.dataset_location, 'UH_mini_dataset')
-            !gdown --id 1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb
+            gdown.download(id='1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb')
+            # !gdown --id 1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./mini_dataset.zip
             shutil.move('./content/datasets', path)
@@ -70,7 +72,8 @@ def build_dataset(is_train, args):
             dataset = UHDataset(dataset_folder, transform)
         else:
             path = os.path.join(args.dataset_location, 'UH_val_dataset')
-            !gdown --id 1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH
+            gdown.download(id='1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH')
+            # !gdown --id 1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./val_dataset.zip
             shutil.move('./content/datasets', path)
@@ -84,8 +87,9 @@ def build_dataset(is_train, args):
     elif args.dataset == 'UH_main':           # Main Dataset for SSL  - ~600k
         if is_train:
             path = os.path.join(args.dataset_location, 'UH_main')
+            gdown.download(id='1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m')
 #             !gdown --id 1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J
-            !gdown --id 1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m
+#             !gdown --id 1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./dataset_v1.zip
             shutil.move('./content/datasets', path)
@@ -96,7 +100,8 @@ def build_dataset(is_train, args):
             dataset = UHDataset(dataset_folder, transform)
         else:
             path = os.path.join(args.dataset_location, 'UH_val_dataset')
-            !gdown --id 1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH
+            gdown.download(id='1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH')
+            # !gdown --id 1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./val_dataset.zip
             shutil.move('./content/datasets', path)
@@ -135,7 +140,8 @@ def build_dataset(is_train, args):
     elif args.dataset == 'BreakHis_2':
         if is_train:
             path = os.path.join(args.dataset_location, 'BreakHis')
-            !gdown --id 1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz
+            gdown.download(id='1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz')
+            # !gdown --id 1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./BreakHis.zip
             shutil.move('./content/BreakHis', path)
@@ -146,7 +152,8 @@ def build_dataset(is_train, args):
             dataset = BreakHis(dataset_folder, transform)
         else:
             path = os.path.join(args.dataset_location, 'BreakHis_test')
-            !gdown --id 1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC
+            gdown.download(id='1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC')
+            # !gdown --id 1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./BreakHis_test.zip
             shutil.move('./content/BreakHis_test', path)
@@ -160,7 +167,8 @@ def build_dataset(is_train, args):
     elif args.dataset == 'MHIST':
         if is_train:
             path = os.path.join(args.dataset_location, 'MHIST')
-            !gdown --id 1-eOvOO2y4VdKOM70whYUHBRk0EWqPatz
+            gdown.download(id='1-eOvOO2y4VdKOM70whYUHBRk0EWqPatz')
+            # !gdown --id 1-eOvOO2y4VdKOM70whYUHBRk0EWqPatz
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./MHIST.zip
             shutil.move('./content/MHIST', path)
@@ -171,7 +179,8 @@ def build_dataset(is_train, args):
             dataset = MHIST(dataset_folder, transform)
         else:
             path = os.path.join(args.dataset_location, 'MHIST_test')
-            !gdown --id 1-hdXBwJPAi-SJEQbHXZvpvrENFGfiyqx
+            gdown.download(id='1-hdXBwJPAi-SJEQbHXZvpvrENFGfiyqx')
+            # !gdown --id 1-hdXBwJPAi-SJEQbHXZvpvrENFGfiyqx
             shutil.rmtree(path, ignore_errors=True)
             !unzip -qq ./MHIST_test.zip
             shutil.move('./content/MHIST_test', path)
