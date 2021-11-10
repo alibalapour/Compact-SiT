@@ -63,7 +63,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb')
             # !gdown --id 1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/mini_dataset.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./mini_dataset.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./mini_dataset.zip
             shutil.move('./content/datasets', path)
@@ -77,7 +77,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH')
             # !gdown --id 1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/val_dataset.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./val_dataset.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./val_dataset.zip
             shutil.move('./content/datasets', path)
@@ -95,7 +95,7 @@ def build_dataset(is_train, args):
             # !gdown --id 1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J
             # !gdown --id 1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/dataset_v1.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./dataset_v1.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./dataset_v1.zip
             shutil.move('./content/datasets', path)
@@ -109,7 +109,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH')
             # !gdown --id 1hMj_1jZIdDzfg75My7CPTvFvYiHdvdJH
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/val_dataset.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./val_dataset.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./val_dataset.zip
             shutil.move('./content/datasets', path)
@@ -150,7 +150,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz')
             # !gdown --id 1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/BreakHis.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./BreakHis.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./BreakHis.zip
             shutil.move('./content/BreakHis', path)
@@ -164,7 +164,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC')
             # !gdown --id 1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/BreakHis_test.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./BreakHis_test.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./BreakHis_test.zip
             shutil.move('./content/BreakHis_test', path)
@@ -181,7 +181,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1-eOvOO2y4VdKOM70whYUHBRk0EWqPatz')
             # !gdown --id 1-eOvOO2y4VdKOM70whYUHBRk0EWqPatz
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/MHIST.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./MHIST.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./MHIST.zip
             shutil.move('./content/MHIST', path)
@@ -195,7 +195,7 @@ def build_dataset(is_train, args):
             gdown.download(id='1-hdXBwJPAi-SJEQbHXZvpvrENFGfiyqx')
             # !gdown --id 1-hdXBwJPAi-SJEQbHXZvpvrENFGfiyqx
             shutil.rmtree(path, ignore_errors=True)
-            with zipfile.ZipFile('/content/MHIST_test.zip', 'r') as zipObj:
+            with zipfile.ZipFile('./MHIST_test.zip', 'r') as zipObj:
                 zipObj.extractall()
             # !unzip -qq ./MHIST_test.zip
             shutil.move('./content/MHIST_test', path)
