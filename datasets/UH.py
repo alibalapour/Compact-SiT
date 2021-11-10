@@ -3,7 +3,7 @@ from torchvision.datasets import ImageFolder
 import numpy as np
 from PIL import Image
 
-import datasets_utils
+from datasets.datasets_utils import getItem
 
 
 # Unlabeled Histopathology Dataset
@@ -20,4 +20,4 @@ class UHDataset(Dataset):
         X = np.array(self.data[idx][0])
         X = Image.fromarray(X.astype(np.uint8))
         target = self.data[idx][1]
-        return datasets_utils.getItem(X, target, self.transform, self.training_mode)
+        return getItem(X, target, self.transform, self.training_mode)

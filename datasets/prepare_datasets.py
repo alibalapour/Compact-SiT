@@ -19,7 +19,6 @@ from datasets.BreakHis import BreakHis
 from datasets.MHIST import MHIST
 
 
-
 def build_dataset(is_train, args):
     transform = build_transform(is_train, args)
 
@@ -58,7 +57,7 @@ def build_dataset(is_train, args):
                                       training_mode=args.training_mode)
         nb_classes = 200
 
-    elif args.dataset == 'UH_mini':         # Mini Dataset for SSL  - ~120k
+    elif args.dataset == 'UH_mini':  # Mini Dataset for SSL  - ~120k
         if is_train:
             path = os.path.join(args.dataset_location, 'UH_mini_dataset')
             gdown.download(id='1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb')
@@ -89,7 +88,7 @@ def build_dataset(is_train, args):
             dataset = UHDataset(dataset_folder, transform)
         nb_classes = 1
 
-    elif args.dataset == 'UH_main':           # Main Dataset for SSL  - ~600k
+    elif args.dataset == 'UH_main':  # Main Dataset for SSL  - ~600k
         if is_train:
             path = os.path.join(args.dataset_location, 'UH_main')
             gdown.download(id='1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m')
@@ -125,7 +124,7 @@ def build_dataset(is_train, args):
         if is_train:
             transform = build_transform(is_train, args)
             dataset_folder = ImageFolder('../input/nct-dataset/NCT_dataset/NCT-CRC-HE-100K')
-#             dataset_folder = ImageFolder('../input/dataset-nct/NCT_dataset/NCT-CRC-HE-100K')
+            #             dataset_folder = ImageFolder('../input/dataset-nct/NCT_dataset/NCT-CRC-HE-100K')
             dataset = NCTDataset(dataset_folder, transform, args.training_mode)
         else:
             transform = build_transform(is_train, args)
@@ -210,7 +209,6 @@ def build_dataset(is_train, args):
     return dataset, nb_classes
 
 
-
 def build_transform(is_train, args):
     resize_im = args.input_size > 32
     if is_train:
@@ -240,5 +238,3 @@ def build_transform(is_train, args):
     t.append(transforms.ToTensor())
     t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
     return transforms.Compose(t)
-
-
