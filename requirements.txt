@@ -4,4 +4,4 @@ pandas
 imageio
 tabulate
 colorama
-gdown
+gdown --upgrade
