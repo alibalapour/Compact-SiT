@@ -207,7 +207,7 @@ def build_dataset(is_train, args):
             dataset = MHIST(dataset_folder, transform)
         nb_classes = 2
 
-    elif args.dataset is None:
+    elif args.dataset == 'Custom':
         if is_train:
             path = os.path.join(args.dataset_location, 'train')
             transform = build_transform(is_train=is_train, args=args)
