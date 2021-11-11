@@ -17,6 +17,7 @@ from datasets.UH import UHDataset
 from datasets.NCT import NCTDataset
 from datasets.BreakHis import BreakHis
 from datasets.MHIST import MHIST
+from datasets.CustomDataset import CustomDataset
 
 
 def build_dataset(is_train, args):
@@ -205,6 +206,25 @@ def build_dataset(is_train, args):
             dataset_folder = ImageFolder(path)
             dataset = MHIST(dataset_folder, transform)
         nb_classes = 2
+
+    elif args.dataset is None:
+        if is_train:
+            path = os.path.join(args.dataset_location, 'Custom_Train')
+            transform = build_transform(is_train=is_train, args=args)
+            try:
+                dataset_folder = ImageFolder(path)
+                dataset = CustomDataset(dataset_folder, transform)
+            except:
+                raise ValueError('your custom train dataset has probelm')
+        else:
+            path = os.path.join(args.dataset_location, 'Custom_Test')
+            transform = build_transform(is_train=is_train, args=args)
+            try:
+                dataset_folder = ImageFolder(path)
+                dataset = CustomDataset(dataset_folder, transform)
+            except:
+                raise ValueError('your custom test dataset has probelm')
+        nb_classes = len(dataset_folder.classes)
 
     return dataset, nb_classes
 
