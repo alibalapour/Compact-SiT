@@ -209,18 +209,18 @@ def build_dataset(is_train, args):
 
     elif args.dataset == 'Custom':
         if is_train:
-            path = os.path.join(args.dataset_location, 'train')
+#             path = os.path.join(args.dataset_location, 'train')
             transform = build_transform(is_train=is_train, args=args)
             try:
-                dataset_folder = ImageFolder(path)
+                dataset_folder = ImageFolder(args.custom_train_dataset_path)
                 dataset = CustomDataset(dataset_folder, transform)
             except:
                 raise ValueError('your custom train dataset has probelm')
         else:
-            path = os.path.join(args.dataset_location, 'val')
+#             path = os.path.join(args.dataset_location, 'val')
             transform = build_transform(is_train=is_train, args=args)
             try:
-                dataset_folder = ImageFolder(path)
+                dataset_folder = ImageFolder(args.custom_val_dataset_path)
                 dataset = CustomDataset(dataset_folder, transform)
             except:
                 raise ValueError('your custom validataion dataset has probelm')
