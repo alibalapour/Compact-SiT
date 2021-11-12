@@ -10,7 +10,7 @@ import os.path
 from typing import Callable, Optional
 
 from torchvision.datasets.utils import verify_str_arg
-from datasets.datasets_utils import getItem
+from dataset.datasets_utils import getItem
 
 
 class STL10(torchvision.datasets.STL10):
