@@ -15,7 +15,7 @@ from timm.scheduler import create_scheduler
 from timm.optim import create_optimizer
 from timm.utils import NativeScaler, get_state_dict, ModelEma
 
-from SiT-Compact.datasets.prepare_datasets import build_dataset
+from dataset.prepare_datasets import build_dataset
 from engine import train_SSL, evaluate_SSL, train_finetune, evaluate_finetune
 from losses import MTL_loss
 
