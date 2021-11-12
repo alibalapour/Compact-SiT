@@ -10,14 +10,14 @@ from torchvision.datasets import ImageFolder
 from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import create_transform
 
-from datasets.TinyImageNet import TinyImageNetDataset
-from datasets.CIFAR import CIFAR10, CIFAR100
-from datasets.STL10 import STL10
-from datasets.UH import UHDataset
-from datasets.NCT import NCTDataset
-from datasets.BreakHis import BreakHis
-from datasets.MHIST import MHIST
-from datasets.CustomDataset import CustomDataset
+from dataset.TinyImageNet import TinyImageNetDataset
+from dataset.CIFAR import CIFAR10, CIFAR100
+from dataset.STL10 import STL10
+from dataset.UH import UHDataset
+from dataset.NCT import NCTDataset
+from dataset.BreakHis import BreakHis
+from dataset.MHIST import MHIST
+from dataset.CustomDataset import CustomDataset
 
 
 def build_dataset(is_train, args):
