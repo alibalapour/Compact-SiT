@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 
 from PIL import Image
 
-from datasets.datasets_utils import getItem, buildLabelIndex
+from dataset.datasets_utils import getItem, buildLabelIndex
 
 
 def _add_channels(img, total_channels=3):
