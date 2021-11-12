@@ -3,7 +3,7 @@ from torchvision.datasets import ImageFolder
 import numpy as np
 from PIL import Image
 
-from datasets.datasets_utils import getItem
+from dataset.datasets_utils import getItem
 
 
 # Unlabeled Histopathology Dataset
