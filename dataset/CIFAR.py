@@ -7,7 +7,7 @@ import numpy as np
 import pickle
 from typing import Any, Callable, Optional, Tuple
 
-from datasets.datasets_utils import buildLabelIndex, getItem
+from dataset.datasets_utils import buildLabelIndex, getItem
 
 
 class CIFAR100(datasets.CIFAR100):
