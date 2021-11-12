@@ -136,6 +136,10 @@ def get_args_parser():
                         type=str, help='dataset name')
     parser.add_argument('--dataset_location', default='downloaded_datasets', type=str,
                         help='dataset location - dataset will be downloaded to this folder')
+    parser.add_argument('--custom_train_dataset_path', deafult='', type=str,
+                        help='path of custom train dataset')
+    parser.add_argument('--custom_val_dataset_path', deafult='', type=str,
+                        help='path of custom validation dataset')
 
     parser.add_argument('--num_imgs_per_cat', default=None, type=int, help='Number of images per training category')
     parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
