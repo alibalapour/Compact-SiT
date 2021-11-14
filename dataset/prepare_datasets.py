@@ -240,9 +240,7 @@ def build_transform(is_train, args):
             interpolation=args.train_interpolation,
             re_prob=args.reprob,
             re_mode=args.remode,
-            re_count=args.recount,
-            mean=(0, 0, 0),
-            std=(1, 1, 1)
+            re_count=args.recount
         )
         if not resize_im:
             transform.transforms[0] = transforms.RandomCrop(
@@ -258,5 +256,5 @@ def build_transform(is_train, args):
         t.append(transforms.CenterCrop(args.input_size))
 
     t.append(transforms.ToTensor())
-    t.append(transforms.Normalize((0, 0, 0), (1, 1, 1)))
+    t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
     return transforms.Compose(t)
