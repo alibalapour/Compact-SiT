@@ -4,9 +4,10 @@ This repository contains the official PyTorch self-supervised pretraining, finet
 
 The training strategy is adopted from main [SiT Repository](https://github.com/Sara-Ahmed/SiT) 
 
-
 > pip install --upgrade -r requirements.txt
 
+# Downloading Pre-Trained Model
+> gdown --id 1ypMbvfmOAxLa8pU7A_jf3v7gayxy1zzf    # 600k_14epochs
 
 # Self-supervised pre-training
 > python main.py --batch-size 72 --epochs 10 --min-lr 5e-6 --lr 1e-4 --training-mode 'SSL' --dataset 'UH_main' --output 'output' --validate-every 1 
