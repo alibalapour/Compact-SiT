@@ -8,7 +8,7 @@ This code of this repor is actually code of [SiT Repository](https://github.com/
 > pip install --upgrade -r requirements.txt || true
 
 # Downloading Pre-Trained Model
-> gdown --id 1ypMbvfmOAxLa8pU7A_jf3v7gayxy1zzf    # 600k_14epochs
+> gdown --id 1ypMbvfmOAxLa8pU7A_jf3v7gayxy1zzf             # 600k_14epochs
 
 # Self-supervised pre-training
 > python main.py --batch-size 72 --epochs 10 --min-lr 5e-6 --lr 1e-4 --training-mode 'SSL' --dataset 'UH_main' --output 'output' --validate-every 1 
