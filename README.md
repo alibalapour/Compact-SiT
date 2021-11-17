@@ -4,7 +4,8 @@ This repository contains the official PyTorch self-supervised pretraining, finet
 
 This code of this repor is actually code of [SiT Repository](https://github.com/Sara-Ahmed/SiT) with some modifications. Some Features added and the backbone of this model is replaced with [CCT-14/7x2](https://github.com/SHI-Labs/Compact-Transformers) with modifications.
 
-> pip install --upgrade -r requirements.txt
+# Instaling Requirements
+> pip install --upgrade -r requirements.txt || true
 
 # Downloading Pre-Trained Model
 > gdown --id 1ypMbvfmOAxLa8pU7A_jf3v7gayxy1zzf    # 600k_14epochs
