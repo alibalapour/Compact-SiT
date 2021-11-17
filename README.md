@@ -17,10 +17,10 @@ This code of this repor is actually code of [SiT Repository](https://github.com/
 Self-supervised pre-trained models using SiT on our unlabeled HistoPatholgy Dataset can be downloaded from [here]()
 
 # Finetuning
-** Finetuning with prepared dataset
+**Finetuning with prepared dataset
 > python main.py  --batch-size 120 --epochs 50 --min-lr 5e-6 --training-mode 'finetune' --dataset 'NCT' --finetune '<<path/to/pretrained_model>>' --output 'output' --validate-every 1 
 
-** Finetuning with custom dataset
+**Finetuning with custom dataset
 > python main.py  --batch-size 120 --epochs 50 --min-lr 5e-6 --training-mode 'finetune' --dataset 'Custom' --custom_train_dataset_path '<<path/to/train_dataset>>' --custom_val_dataset_path '<<path/to/val_dataset>>' --finetune 'output/checkpoint.pth' --output 'output' --validate-every 1 
 
 # Linear Evaluation
