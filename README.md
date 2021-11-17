@@ -13,8 +13,7 @@ This code of this repor is actually code of [SiT Repository](https://github.com/
 # Self-supervised pre-training
 > python main.py --batch-size 72 --epochs 10 --min-lr 5e-6 --lr 1e-4 --training-mode 'SSL' --dataset 'UH_main' --output 'output' --validate-every 1 
 
-
-Self-supervised pre-trained models using SiT on our unlabeled HistoPatholgy Dataset can be downloaded from [here]()
+<!-- Self-supervised pre-trained models using SiT on our unlabeled HistoPatholgy Dataset can be downloaded from [here]() -->
 
 # Finetuning
 **Finetuning with prepared dataset**
