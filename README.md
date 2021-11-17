@@ -1,8 +1,8 @@
-# SiT (Self-supervised vIsion Transformer) for HistoPathology Images
+# Compact SiT (Self-supervised vIsion Transformer) for HistoPathology Images
 
-This repository contains the official PyTorch self-supervised pretraining, finetuning, and evaluation codes for SiT (Self-supervised image Transformer) with focus on HistoPathology images. Also, we changed BackBone of SiT (ViT) model with an compact visiont transformer.
+This repository contains the official PyTorch self-supervised pretraining, finetuning, and evaluation codes for compact SiT (Self-supervised image Transformer) with main focus on HistoPathology images.
 
-This code of this repor is actually code of [SiT Repository](https://github.com/Sara-Ahmed/SiT) with some modifications. Some Features added and the backbone of this model is replaced with [CCT-14/7x2](https://github.com/SHI-Labs/Compact-Transformers) with modifications.
+This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/SiT) with some modifications and improvements. Some features were added and the backbone of the model was replaced with [CCT-14/7x2](https://github.com/SHI-Labs/Compact-Transformers)(with some changes).
 
 # Instaling Requirements
 > pip install --upgrade -r requirements.txt || true
