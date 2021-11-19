@@ -134,18 +134,6 @@ def build_dataset(is_train, args):
         nb_classes = 9
 
     elif args.dataset == 'BreakHis':
-        pass
-        # if is_train:
-        #     transform = build_transform(is_train, args)
-        #     dataset_folder = ImageFolder('../input/breakhis/BreakHis/content/BreakHis')
-        #     dataset = BreakHis(dataset_folder, transform, args.training_mode)
-        # else:
-        #     transform = build_transform(is_train, args)
-        #     dataset_folder = ImageFolder('../input/breakhis/BreakHis_test/content/BreakHis_test')
-        #     dataset = BreakHis(dataset_folder, transform, args.training_mode)
-        # nb_classes = 2
-
-    elif args.dataset == 'BreakHis_2':
         if is_train:
             path = os.path.join(args.dataset_location, 'BreakHis')
             gdown.download(id='1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz')
