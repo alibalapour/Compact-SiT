@@ -67,6 +67,7 @@ class BC_Evaluation():
 
 
 def get_args_parser():
+    parser = argparse.ArgumentParser('SiT training and evaluation script', add_help=False)
     parser.add_argument('--batch-size', default=120, type=int)
     parser.add_argument('--input-size', default=224, type=int, help='images input size')
     parser.add_argument('--custom_test_dataset_path', default='', type=str,
