@@ -101,7 +101,7 @@ def main(args):
         training_mode=args.training_mode
     )
     checkpoint = torch.load(args.model_path, map_location='cpu')
-    model = model.load_state_dict(checkpoint['model'])
+    model.load_state_dict(checkpoint['model'])
 
     correct_test = 0
     total_test = 0
