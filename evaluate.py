@@ -102,6 +102,7 @@ def main(args):
     )
     checkpoint = torch.load(args.model_path, map_location='cpu')
     model.load_state_dict(checkpoint['model'])
+    model.to(args.device)
 
     correct_test = 0
     total_test = 0
