@@ -87,7 +87,7 @@ class BC_Evaluation():
             roc_auc=roc_auc,
             average_precision_score=average_precision_score
         )
-        return {name: func(y, y_hat) for name, eval(func in self.evaluation_functions.items()}
+        return {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
 
 
 def main(args):
