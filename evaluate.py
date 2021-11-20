@@ -85,7 +85,7 @@ class BC_Evaluation():
             precision_negative=self.precision_negative,
             recall_negative=self.recall_negative,
             roc_auc=self.roc_auc,
-            average_precision_score=self.average_precision_score
+            average_precision_score=self.aps
         )
         return {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
 
