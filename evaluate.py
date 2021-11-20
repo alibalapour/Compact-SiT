@@ -28,6 +28,8 @@ def get_args_parser():
     parser.add_argument('--model-path', default='', type=str,
                         help='path of the fine-tuned model')
 
+    return parser
+
 
 class BC_Evaluation():
     def __init__(self):
