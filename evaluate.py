@@ -85,7 +85,7 @@ class BC_Evaluation():
 def main(args):
     args.custom_val_dataset_path = args.custom_test_dataset_path
     dataset_test, args.nb_classes = build_dataset(is_train=False, args=args)
-    dataloader_test = DataLoader(dataset_test, batch_size=args.batch_size, shuffle=True)
+    dataloader_test = torch.utils.data.DataLoader(dataset_test, batch_size=args.batch_size, shuffle=True)
 
     checkpoint = torch.load(args.model_path)
     model = checkpoint['model']
