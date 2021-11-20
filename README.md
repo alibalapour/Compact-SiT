@@ -8,7 +8,7 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
 > pip install --upgrade -r requirements.txt || true
 
 # Downloading Pre-Trained Model
-> gdown --id 1RgMhblmITDkq1JUrSIOIlpV7_KrKdvvo             # 600k_24epochs
+> gdown --id 1BqoJ_IJWjOwqueCZstch-XQERcUto3dt             # 600k_30epochs
 
 # Self-supervised pre-training
 > python main.py --batch-size 72 --epochs 10 --min-lr 5e-6 --lr 1e-4 --training-mode 'SSL' --dataset 'UH_main' --output 'output' --validate-every 1 
