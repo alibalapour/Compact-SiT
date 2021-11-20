@@ -6,6 +6,7 @@ import torch
 from pathlib import Path
 
 from dataset.prepare_datasets import build_dataset
+import vision_transformer_SiT
 
 from timm.models import create_model
 
