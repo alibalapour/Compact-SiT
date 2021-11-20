@@ -111,10 +111,10 @@ def main(args):
     with torch.no_grad():
         for data in dataloader_test:
             tensor = data[0]
-            tensor = tensor.to('cuda')
+            tensor = tensor.to(args.device)
             label = data[1]
             targets += label.tolist()
-            label = label.to('cuda')
+            label = label.to(args.device)
             output_1, output_2 = model(tensor)
             output = (output_1 + output_2) / 2
             predicted = torch.argmax(output, 1)
