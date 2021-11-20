@@ -96,7 +96,7 @@ def main(args):
     predicted_probs = []
     targets = []
     with torch.no_grad():
-        for data in test_loader:
+        for data in dataloader_test:
             tensor = data[0]
             tensor = tensor.to('cuda')
             label = data[1]
