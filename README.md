@@ -32,5 +32,6 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
 
 **Note: assign the --dataset_location parameter to the location of the downloaded dataset**
 
-
+# Evaluate
+> !python evaluate.py --batch-size 180 --dataset 'Custom' --custom_test_dataset_path '<<path/to/test_dataset>>' --model-path '<<path/to/finetuned_model>>'
 
