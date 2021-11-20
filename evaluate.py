@@ -42,50 +42,50 @@ class BC_Evaluation():
     def __init__(self):
         self.evaluation_functions = None
 
-    def accuracy_(y, y_hat) -> float:
+    def accuracy_(self, y, y_hat) -> float:
         return accuracy_score(y, y_hat)
 
-    def f1(y, y_hat, alpha: float = 0.5, beta: float = 1.):
+    def f1(self, y, y_hat, alpha: float = 0.5, beta: float = 1.):
         return f1_score(y, y_hat)
 
-    def precision(y, y_hat) -> float:
+    def precision(self, y, y_hat) -> float:
         return precision_score(y, y_hat)
 
-    def recall(y, y_hat) -> float:
+    def recall(self, y, y_hat) -> float:
         return recall_score(y, y_hat)
 
-    def f1_negative(y, y_hat, alpha: float = 0.5, beta: float = 1.):
+    def f1_negative(self, y, y_hat, alpha: float = 0.5, beta: float = 1.):
         y = 1 - y
         y_hat = 1 - y_hat
         return f1_score(y, y_hat)
 
-    def precision_negative(y, y_hat) -> float:
+    def precision_negative(self, y, y_hat) -> float:
         y = 1 - y
         y_hat = 1 - y_hat
         return precision_score(y, y_hat)
 
-    def recall_negative(y, y_hat) -> float:
+    def recall_negative(self, y, y_hat) -> float:
         y = 1 - y
         y_hat = 1 - y_hat
         return recall_score(y, y_hat)
 
-    def roc_auc(y, y_hat) -> float:
+    def roc_auc(self, y, y_hat) -> float:
         return roc_auc_score(y, y_hat)
 
-    def aps(y, y_hat) -> float:
+    def aps(self, y, y_hat) -> float:
         return average_precision_score(y, y_ha)
 
-    def evaluate(y, y_hat):
+    def evaluate(self, y, y_hat):
         self.evaluation_functions = dict(
-            accuracy=accuracy_,
-            f1=f1,
-            precision=precision,
-            recall=recall,
-            f1_negative=f1_negative,
-            precision_negative=precision_negative,
-            recall_negative=recall_negative,
-            roc_auc=roc_auc,
-            average_precision_score=average_precision_score
+            accuracy=self.accuracy_,
+            f1=self.f1,
+            precision=self.precision,
+            recall=self.recall,
+            f1_negative=self.f1_negative,
+            precision_negative=self.precision_negative,
+            recall_negative=self.recall_negative,
+            roc_auc=self.roc_auc,
+            average_precision_score=self.average_precision_score
         )
         return {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
 
