@@ -73,7 +73,7 @@ class BC_Evaluation():
         return roc_auc_score(y, y_hat)
 
     def aps(self, y, y_hat) -> float:
-        return average_precision_score(y, y_ha)
+        return average_precision_score(y, y_hat)
 
     def evaluate(self, y, y_hat):
         self.evaluation_functions = dict(
