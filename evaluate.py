@@ -15,6 +15,20 @@ from sklearn.metrics import cohen_kappa_score
 from sklearn.metrics import RocCurveDisplay, roc_curve, auc
 
 
+def get_args_parser():
+    parser = argparse.ArgumentParser('SiT training and evaluation script', add_help=False)
+    parser.add_argument('--batch-size', default=120, type=int)
+    parser.add_argument('--input-size', default=224, type=int, help='images input size')
+    parser.add_argument('--custom_test_dataset_path', default='', type=str,
+                        help='path of custom test dataset')
+    parser.add_argument('--device', default='cuda',
+                        help='device to use for training / testing')
+    parser.add_argument('--dataset', default='Custom', choices=['Custom'],
+                        type=str, help='dataset name')
+    parser.add_argument('--model-path', default='', type=str,
+                        help='path of the fine-tuned model')
+
+
 class BC_Evaluation():
     def __init__(self):
         self.evaluation_functions = dict(
@@ -64,20 +78,6 @@ class BC_Evaluation():
 
     def evaluate(y, y_hat):
         return {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
-
-
-def get_args_parser():
-    parser = argparse.ArgumentParser('SiT training and evaluation script', add_help=False)
-    parser.add_argument('--batch-size', default=120, type=int)
-    parser.add_argument('--input-size', default=224, type=int, help='images input size')
-    parser.add_argument('--custom_test_dataset_path', default='', type=str,
-                        help='path of custom test dataset')
-    parser.add_argument('--device', default='cuda',
-                        help='device to use for training / testing')
-    parser.add_argument('--dataset', default='Custom', choices=['Custom'],
-                        type=str, help='dataset name')
-    parser.add_argument('--model-path', default='', type=str,
-                        help='path of the fine-tuned model')
 
 
 def main(args):
