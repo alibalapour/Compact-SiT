@@ -40,17 +40,7 @@ def get_args_parser():
 
 class BC_Evaluation():
     def __init__(self):
-        self.evaluation_functions = dict(
-            accuracy=accuracy_,
-            f1=f1,
-            precision=precision,
-            recall=recall,
-            f1_negative=f1_negative,
-            precision_negative=precision_negative,
-            recall_negative=recall_negative,
-            roc_auc=roc_auc,
-            average_precision_score=average_precision_score
-        )
+        self.evaluation_functions = None
 
     def accuracy_(y, y_hat) -> float:
         return accuracy_score(y, y_hat)
@@ -86,7 +76,18 @@ class BC_Evaluation():
         return average_precision_score(y, y_ha)
 
     def evaluate(y, y_hat):
-        return {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
+        self.evaluation_functions = dict(
+            accuracy=accuracy_,
+            f1=f1,
+            precision=precision,
+            recall=recall,
+            f1_negative=f1_negative,
+            precision_negative=precision_negative,
+            recall_negative=recall_negative,
+            roc_auc=roc_auc,
+            average_precision_score=average_precision_score
+        )
+        return {name: func(y, y_hat) for name, eval(func in self.evaluation_functions.items()}
 
 
 def main(args):
