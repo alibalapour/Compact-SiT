@@ -7,6 +7,8 @@ from pathlib import Path
 
 from dataset.prepare_datasets import build_dataset
 
+from timm.models import create_model
+
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, \
     average_precision_score
 from sklearn.metrics import classification_report
@@ -17,6 +19,10 @@ from sklearn.metrics import RocCurveDisplay, roc_curve, auc
 
 def get_args_parser():
     parser = argparse.ArgumentParser('SiT training and evaluation script', add_help=False)
+    parser.add_argument('--model', default='SiT_compact_patch16_224', type=str, metavar='MODEL',
+                        help='Name of model to train')
+    parser.add_argument('--training-mode', default='finetune', choices=['finetune'],
+                        type=str, help='training mode')
     parser.add_argument('--batch-size', default=120, type=int)
     parser.add_argument('--input-size', default=224, type=int, help='images input size')
     parser.add_argument('--custom_test_dataset_path', default='', type=str,
@@ -87,8 +93,14 @@ def main(args):
     dataset_test, args.nb_classes = build_dataset(is_train=False, args=args)
     dataloader_test = torch.utils.data.DataLoader(dataset_test, batch_size=args.batch_size, shuffle=True)
 
-    checkpoint = torch.load(args.model_path)
-    model = checkpoint['model']
+    model = create_model(
+        args.model,
+        pretrained=False,
+        num_classes=args.nb_classes,
+        training_mode=args.training_mode
+    )
+    checkpoint = torch.load(args.model_path, map_location='cpu')
+    model = model.load_state_dict(checkpoint['model'])
 
     correct_test = 0
     total_test = 0
