@@ -4,6 +4,10 @@ This repository contains the official PyTorch self-supervised pretraining, finet
 
 This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/SiT) with some modifications and improvements. Some features were added and the backbone of the model was replaced with [CCT-14/7x2](https://github.com/SHI-Labs/Compact-Transformers)(with some changes).
 
+# Procedure
+First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). 
+
+
 # Instaling Requirements
 > pip install --upgrade -r requirements.txt || true
 
