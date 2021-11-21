@@ -34,6 +34,11 @@ def get_args_parser():
                         type=str, help='dataset name')
     parser.add_argument('--model-path', default='', type=str,
                         help='path of the fine-tuned model')
+    
+    # related to linear evaluation
+    parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
+                        help='If true, the backbone of the system will be freezed')
+    parser.add_argument('--representation-size', default=None, type=int, help='nonLinear head')
 
     return parser
 
@@ -99,12 +104,14 @@ def main(args):
         args.model,
         pretrained=False,
         num_classes=args.nb_classes,
-        training_mode=args.training_mode
+        training_mode=args.training_mode,
+        representation_size=args.representation_size,
     )
     checkpoint = torch.load(args.model_path, map_location='cpu')
     model.load_state_dict(checkpoint['model'])
     model.to(args.device)
-
+            
+            
     correct_test = 0
     total_test = 0
     predicted_output = []
