@@ -1,6 +1,6 @@
 # Compact SiT (Self-supervised vIsion Transformer) for HistoPathology Images
 
-This repository contains the official PyTorch self-supervised pretraining, finetuning, and evaluation codes for compact SiT (Self-supervised image Transformer) with main focus on HistoPathology images. The SiT model uses three pre-text tasks for self-supervised learning: Reconstruction, Rotation Prediction, and Contrastive Learning. These three tasks are implemented on a Vision Transformer (ViT) model to gain advantages of the attention mechanism. In this work, we replaced the backbone of SiT model and replaced it with a more efficient and less data-hungry vision transformer named CCT (compact convolution transformer). Then we pre-trained and fine-tuned the new model on histopathology images to get better results on this kind of image.  
+This repository contains the official PyTorch self-supervised pretraining, finetuning, and evaluation codes for compact SiT (Self-supervised image Transformer) with main focus on HistoPathology images. The SiT model uses three pre-text tasks for self-supervised learning: Reconstruction, Rotation Prediction, and Contrastive Learning. These three tasks are implemented on a Vision Transformer (ViT) model to gain advantages of the attention mechanism. In this work, we replaced the backbone of SiT model and replaced it with a more efficient and less data-hungry vision transformer named CCT (Compact Convolutional Transformer). Then we pre-trained and fine-tuned the new model on histopathology images to get better results on this kind of image.  
 
 This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/SiT) with some modifications and improvements. Some features were added and the backbone of the model was replaced with [CCT-14/7x2](https://github.com/SHI-Labs/Compact-Transformers)(with some changes).
 
@@ -12,6 +12,10 @@ First, we pre-trained the SiT-Compact model on a diverse unlabeled histopatholog
   <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
 </figure>
 
+As mentioned before, the pre-training consists of three pre-texts. 
+The original image corrupts with random drop, random replace, color distortion, blurring, and gray-scale in the reconstruction pre-text. Then the corrupted image is converted to patches and is fed to Transformer. After feedforward, the output of the last encoder in the Transformer is combined and makes a reconstructed image. Then with a loss function difference between the reconstructed image and the original image is measured.
+- The second pre-text task is rotating the corrupted image randomly with 4 degrees (0, 90, 180, 270) and adding an extra token (like cls token) to predict rotation. A loss function is used to learn the rotation of images in the pre-training dataset.
+- The third task is contrastive learning. In each mini-batch, two images are generated from one image and a special loss function is defined for contrastive learning. For more information, check this [paper](https://arxiv.org/abs/2002.05709). 
 ...
 
 # Instaling Requirements
