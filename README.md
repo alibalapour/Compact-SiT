@@ -12,10 +12,11 @@ First, we pre-trained the SiT-Compact model on a diverse unlabeled histopatholog
   <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
 </figure>
 
+
 As mentioned before, the pre-training consists of three pre-texts. 
-The original image corrupts with random drop, random replace, color distortion, blurring, and gray-scale in the reconstruction pre-text. Then the corrupted image is converted to patches and is fed to Transformer. After feedforward, the output of the last encoder in the Transformer is combined and makes a reconstructed image. Then with a loss function difference between the reconstructed image and the original image is measured.
+- The original image corrupts with random drop, random replace, color distortion, blurring, and gray-scale in the reconstruction pre-text. Then the corrupted image is converted to patches and is fed to Transformer. After feedforward, the output of the last encoder in the Transformer is combined and makes a reconstructed image. Then with a loss function difference between the reconstructed image and the original image is measured.
 - The second pre-text task is rotating the corrupted image randomly with 4 degrees (0, 90, 180, 270) and adding an extra token (like cls token) to predict rotation. A loss function is used to learn the rotation of images in the pre-training dataset.
-- The third task is contrastive learning. In each mini-batch, two images are generated from one image and a special loss function is defined for contrastive learning. For more information, check this [paper](https://arxiv.org/abs/2002.05709). 
+- The third task is contrastive learning. In each mini-batch, two images are generated from one image and a special loss function is defined for contrastive learning. For more information, check this [paper](https://arxiv.org/abs/2002.05709).  <br>
 ...
 
 # Instaling Requirements
