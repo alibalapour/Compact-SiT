@@ -140,7 +140,7 @@ def get_args_parser():
                         help='path of custom train dataset')
     parser.add_argument('--custom_val_dataset_path', default='', type=str,
                         help='path of custom validation dataset')
-    parser.add_argument('--validation-split', type=None, default=1.0,
+    parser.add_argument('--validation-split', type=float, default=None,
                         help='fraction of the training data to be used as validation data')
 
     parser.add_argument('--num_imgs_per_cat', default=None, type=int, help='Number of images per training category')
