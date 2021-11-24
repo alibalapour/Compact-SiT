@@ -10,8 +10,7 @@ First, we pre-trained the SiT-Compact model on a diverse unlabeled histopatholog
 <figure >
 <!--   <img src="https://user-images.githubusercontent.com/42287060/142759501-a98a6d7a-fe6b-4063-b7ff-c88aedc04a7a.png" class="center" alt="drawing" width="500"/> -->
   <img src="https://user-images.githubusercontent.com/42287060/143192349-45f49221-67b5-4737-85cb-2a311dade439.png" class="center" alt="drawing" width="750"/>
-  <figcaption>Fig.1 - sample of unl
-abeled dataset</figcaption>
+  <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
 </figure>
 
 <br>
