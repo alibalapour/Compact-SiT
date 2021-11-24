@@ -197,12 +197,31 @@ def build_dataset(is_train, args):
 
     elif args.dataset == 'Custom':
         if is_train:
-            transform = build_transform(is_train=is_train, args=args)
-            try:
+            if args.validation_split is None:
+                transform = build_transform(is_train=is_train, args=args)
+                try:
+                    dataset_folder = ImageFolder(args.custom_train_dataset_path)
+                    dataset = CustomDataset(dataset_folder, transform)
+                except:
+                    raise ValueError('your custom train dataset has probelm')
+            else:
                 dataset_folder = ImageFolder(args.custom_train_dataset_path)
-                dataset = CustomDataset(dataset_folder, transform)
-            except:
-                raise ValueError('your custom train dataset has probelm')
+                dataset_folder_len = len(dataset_folder)
+
+                indices = np.arange(dataset_folder_len)
+                val_indices = random.sample(population=list(indices), k=int(dataset_folder_len * args.validation_split))
+                train_indices = list(set(indices) - set(val_indices))
+
+                dataset_folder_train = torch.utils.data.Subset(dataset_folder, train_indices)
+                dataset_folder_val = torch.utils.data.Subset(dataset_folder, val_indices)
+
+                train_transform = build_transform(is_train=True, args=args)
+                train_dataset = CustomDataset(dataset_folder_train, train_transform)
+
+                val_transform = build_transform(is_train=False, args=args)
+                val_dataset = CustomDataset(dataset_folder_val, val_transform)
+                return train_dataset, val_dataset, nb_classes
+
         else:
             transform = build_transform(is_train=is_train, args=args)
             try:

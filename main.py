@@ -140,6 +140,8 @@ def get_args_parser():
                         help='path of custom train dataset')
     parser.add_argument('--custom_val_dataset_path', default='', type=str,
                         help='path of custom validation dataset')
+    parser.add_argument('--validation-split', type=None, default=1.0,
+                        help='fraction of the training data to be used as validation data')
 
     parser.add_argument('--num_imgs_per_cat', default=None, type=int, help='Number of images per training category')
     parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
@@ -221,8 +223,14 @@ def main(args):
 
     # Create train and validation datasets
     print("Loading dataset ....")
-    dataset_train, args.nb_classes = build_dataset(is_train=True, args=args)
-    dataset_val, _ = build_dataset(is_train=False, args=args)
+    if args.validation_split is None:
+        dataset_train, args.nb_classes = build_dataset(is_train=True, args=args)
+        dataset_val, _ = build_dataset(is_train=False, args=args)
+    else:
+        if args.dataset != 'Custom':
+            raise('validation-split argument is only for custom datasets.')
+        dataset_train, dataset_val, args.nb_classes = build_dataset(is_train=True, args=args)
+
 
     if args.dataset_ratio:
         dataset_len = len(dataset_train)
