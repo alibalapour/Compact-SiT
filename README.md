@@ -8,10 +8,13 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
 First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
 
 <figure >
-  <img src="https://user-images.githubusercontent.com/42287060/142759501-a98a6d7a-fe6b-4063-b7ff-c88aedc04a7a.png" class="center" alt="drawing" width="300"/>
-  <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
-</figure>
+<!--   <img src="https://user-images.githubusercontent.com/42287060/142759501-a98a6d7a-fe6b-4063-b7ff-c88aedc04a7a.png" class="center" alt="drawing" width="500"/> -->
+  <img src="https://user-images.githubusercontent.com/42287060/143192349-45f49221-67b5-4737-85cb-2a311dade439.png" class="center" alt="drawing" width="900"/>
+  <figcaption>Fig.1 - sample of unl
+abeled dataset</figcaption>
+</figure> ![143192349-45f49221-67b5-4737-85cb-2a311dade439](https://user-images.githubusercontent.com/42287060/143192588-5b20eb14-2619-4a52-80a5-edf1e72b479e.png)
 
+<br>
 
 As mentioned before, the pre-training consists of three pre-texts. 
 - The original image corrupts with random drop, random replace, color distortion, blurring, and gray-scale in the reconstruction pre-text. Then the corrupted image is converted to patches and is fed to Transformer. After feedforward, the output of the last encoder in the Transformer is combined and makes a reconstructed image. Then with a loss function difference between the reconstructed image and the original image is measured.
