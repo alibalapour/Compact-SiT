@@ -223,6 +223,7 @@ def build_dataset(is_train, args):
 
                 val_transform = build_transform(is_train=False, args=args)
                 val_dataset = CustomDataset(dataset_folder_val, val_transform)
+                nb_classes = len(dataset_folder.classes)
                 return train_dataset, val_dataset, nb_classes
 
         else:
