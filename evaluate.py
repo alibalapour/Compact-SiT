@@ -147,6 +147,8 @@ def main(args):
         print(classification_report(targets, predicted_output))
         print("kappa score :", cohen_kappa_score(targets, predicted_output))
         print("auc macro :", roc_auc_score(targets, predicted_probs, average="macro", multi_class="ovr"))
+        print("macro f1 :" f1_score(targets, predicted_output, average="macro"))
+        print("weighted f1 :" f1_score(targets, predicted_output, average="weighted"))
 
 
 if __name__ == '__main__':
