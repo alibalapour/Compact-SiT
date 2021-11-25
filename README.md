@@ -21,7 +21,9 @@ As mentioned before, the pre-training consists of three pre-texts.
 - The third task is contrastive learning. The main focus of this method is to learn image embeddings that are invariant to different augmented views of the same image while being discriminative among different images. In each mini-batch, two images are generated from one image, and a special loss function is defined for contrastive learning. For more information, check this [paper](https://arxiv.org/abs/2002.05709).  <br>
 
 
-In the main paper ([SiT](https://arxiv.org/abs/2104.03602)), all three pre-text tasks are explained completely.
+In the main paper ([SiT](https://arxiv.org/abs/2104.03602)), all three pre-text tasks are explained completely. <br>
+
+After pre-training, the model is fine-tuned on some famous histopathology datasets like [NCT-CRC-HE-100K](https://zenodo.org/record/1214456) and [BreakHis](https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/) and tested on them. Results of these tests are provided in the next sections. Some of these tests are investigating the effect of pre-training on histopathology datasets and some of them focused on comparing SiT model with other self-supervised methods used in histopathology image classification.
 ...
 
 
