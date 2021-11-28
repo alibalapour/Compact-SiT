@@ -6,7 +6,7 @@ from PIL import Image
 from dataset.datasets_utils import getItem
 
 
-# MHIST Histopathology Dataset
+# Custom Histopathology
 class CustomDataset(Dataset):
     def __init__(self, dataset_folder, transform=None, training_mode='finetune'):
         self.data = dataset_folder
