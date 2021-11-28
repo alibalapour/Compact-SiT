@@ -157,6 +157,7 @@ def main(args):
     else:
         outputs = []
         labels = []
+        targets = []
         with torch.no_grad():
             for data in dataloader_test:
                 tensor = data[0]
