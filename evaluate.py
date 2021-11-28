@@ -40,6 +40,9 @@ def get_args_parser():
                         help='If true, the backbone of the system will be freezed')
     parser.add_argument('--representation-size', default=None, type=int, help='nonLinear head')
 
+    parser.add_argument('--feature-extractor', action='store_true', default=False,
+                        help='model acts like an feature extractor')
+    
     return parser
 
 
@@ -106,6 +109,7 @@ def main(args):
         num_classes=args.nb_classes,
         training_mode=args.training_mode,
         representation_size=args.representation_size,
+        feature_extractor=args.feature_extractor
     )
     checkpoint = torch.load(args.model_path, map_location='cpu')
     model.load_state_dict(checkpoint['model'])
