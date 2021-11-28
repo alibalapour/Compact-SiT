@@ -5,7 +5,6 @@ import time
 import torch
 from pathlib import Path
 import matplotlib.pyplot as plt
-%matplotlib inline
 
 import pandas as pd
 from sklearn.manifold import TSNE
