@@ -170,6 +170,7 @@ def main(args):
                 outputs += output.tolist()
                 predicted = torch.argmax(output, 1)
                 predicted_output += predicted.tolist()
+        print(len(outputs), outputs[0])
         print(np.array(outputs).shape())
         
 
