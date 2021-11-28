@@ -206,7 +206,7 @@ def build_dataset(is_train, args):
                     dataset_folder = ImageFolder(args.custom_train_dataset_path)
                     dataset = CustomDataset(dataset_folder, transform)
                 except:
-                    raise ValueError('your custom train dataset has probelm')
+                    raise ValueError('your custom train dataset has problem')
             else:
                 dataset_folder = ImageFolder(args.custom_train_dataset_path)
                 dataset_folder_len = len(dataset_folder)
@@ -232,7 +232,7 @@ def build_dataset(is_train, args):
                 dataset_folder = ImageFolder(args.custom_val_dataset_path)
                 dataset = CustomDataset(dataset_folder, transform)
             except:
-                raise ValueError('your custom validataion dataset has probelm')
+                raise ValueError('your custom validataion dataset has problem')
         nb_classes = len(dataset_folder.classes)
 
     return dataset, nb_classes
