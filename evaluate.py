@@ -4,6 +4,11 @@ import numpy as np
 import time
 import torch
 from pathlib import Path
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+import pandas as pd
+from sklearn.manifold import TSNE
 
 from dataset.prepare_datasets import build_dataset
 import vision_transformer_SiT
@@ -170,8 +175,17 @@ def main(args):
                 outputs += output.tolist()
                 predicted = torch.argmax(output, 1)
                 predicted_output += predicted.tolist()
-        print(len(outputs), outputs[0])
-        print(np.array(outputs).shape())
+        outputs = np.array(outputs)
+        tsne = TSNE()
+        outputs = tsne.fit_transform(a)
+
+        df = pd.DataFrame(outputs, columns = ['x','y'])
+        df['target'] = targets
+        df.head()
+        colors = [int(i % args.nb_classes) for i in range(len(df))]
+        plt.scatter(df['x'], df['y'], c=colors)
+        plt.savefig('plot.png', dpi=300, bbox_inches='tight')
+        plt.show()
         
 
 if __name__ == '__main__':
