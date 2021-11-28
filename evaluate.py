@@ -39,8 +39,6 @@ def get_args_parser():
     parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
                         help='If true, the backbone of the system will be freezed')
     parser.add_argument('--representation-size', default=None, type=int, help='nonLinear head')
-    parser.add_argument('--validation-split', type=float, default=None,
-                        help='fraction of the training data to be used as validation data')
 
     return parser
 
