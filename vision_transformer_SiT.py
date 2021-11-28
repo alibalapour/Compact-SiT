@@ -178,7 +178,7 @@ class VisionTransformer_SiT(nn.Module):
     def __init__(self, img_size=224, patch_size=16, in_chans=3, num_classes=1000, embed_dim=768, depth=12,
                  num_heads=12, mlp_ratio=4., qkv_bias=True, qk_scale=None, representation_size=None, distilled=False,
                  drop_rate=0., attn_drop_rate=0., drop_path_rate=0., embed_layer=None, norm_layer=None,
-                 act_layer=None, weight_init='', training_mode='SSL', seq_pool=False):
+                 act_layer=None, weight_init='', training_mode='SSL', seq_pool=False, feature_extractor=False):
         """
         Args:
             img_size (int, tuple): input image size
@@ -248,6 +248,8 @@ class VisionTransformer_SiT(nn.Module):
 
         self.seq_pool = seq_pool
         self.last_fc = nn.Linear(embed_dim, num_classes)
+        
+        self.feature_extractor = feature_extractor
 
         # Classifier head(s)
         if training_mode == 'SSL':
@@ -317,7 +319,10 @@ class VisionTransformer_SiT(nn.Module):
             x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
             x = self.last_fc(x)
             return x / 2, x / 2
-
+        
+        if self.feature_extractor:
+            return (x[:, 0] + x[:, 1]) / 2 
+        
         x_rot = self.pre_logits_rot(x[:, 0])
         x_rot = self.rot_head(x_rot)
 
