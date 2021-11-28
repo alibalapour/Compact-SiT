@@ -176,7 +176,7 @@ def main(args):
                 predicted_output += predicted.tolist()
         outputs = np.array(outputs)
         tsne = TSNE()
-        outputs = tsne.fit_transform(a)
+        outputs = tsne.fit_transform(outputs)
 
         df = pd.DataFrame(outputs, columns = ['x','y'])
         df['target'] = targets
