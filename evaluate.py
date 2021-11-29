@@ -180,6 +180,8 @@ def main(args):
 
         df = pd.DataFrame(outputs, columns = ['x','y'])
         df['target'] = targets
+        df.to_csv('dataframe.csv')
+        
         colors = [int(i % args.nb_classes) for i in df['target']]
         plt.scatter(df['x'], df['y'], c=colors)
         plt.savefig('plot.png', dpi=300, bbox_inches='tight')
