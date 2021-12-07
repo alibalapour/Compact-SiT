@@ -34,7 +34,7 @@ def get_args_parser():
                         help='path of custom test dataset')
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
-    parser.add_argument('--dataset', default='Custom', choices=['Custom'],
+    parser.add_argument('--dataset', default='Custom', choices=['Custom', 'BreakHis'],
                         type=str, help='dataset name')
     parser.add_argument('--model-path', default='', type=str,
                         help='path of the fine-tuned model')
