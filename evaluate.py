@@ -83,13 +83,13 @@ class BC_Evaluation():
         y_hat = 1 - y_hat
         return recall_score(y, y_hat)
 
-    def roc_auc(self, y, y_hat) -> float:
-        return roc_auc_score(y, y_hat)
+    def roc_auc(self, y, y_hat_probs) -> float:
+        return roc_auc_score(y, y_hat_probs)
 
-    def aps(self, y, y_hat) -> float:
-        return average_precision_score(y, y_hat)
+    def aps(self, y, y_hat_probs) -> float:
+        return average_precision_score(y, y_hat_probs)
 
-    def evaluate(self, y, y_hat):
+    def evaluate(self, y, y_hat, y_hat_probs):
         self.evaluation_functions = dict(
             accuracy=self.accuracy_,
             f1=self.f1,
@@ -98,10 +98,11 @@ class BC_Evaluation():
             f1_negative=self.f1_negative,
             precision_negative=self.precision_negative,
             recall_negative=self.recall_negative,
-            roc_auc=self.roc_auc,
-            average_precision_score=self.aps
         )
-        return {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
+        results = {name: func(y, y_hat) for name, func in self.evaluation_functions.items()}
+        results['average precision score'] = self.aps(y, y_hat_probs)
+        results['auc'] = self.roc_auc(y, y_hat_probs)
+        return results
 
 
 def main(args):
