@@ -115,7 +115,8 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 <thead>
   <tr>
     <th>Previous Works</th>
-    <th>Macro F1</th>
+    <th>Macro F1 on NCT-CRC</th>
+    <th>Macro F1 on BreakHis</th>
     <th>Backbone</th>
   </tr>
 </thead>
@@ -123,31 +124,37 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
   <tr>
     <td>Autoencoder</td>
     <td>37.0</td>
+    <td>36.0</td>
     <td>ResNet50</td>
   </tr>
   <tr>
     <td>Colorization</td>
     <td>80.2</td>
+    <td>72.4</td>
     <td>ResNet50</td>
   </tr>
   <tr>
     <td>CPCv2</td>
     <td>80.1</td>
+    <td>71.1</td>
     <td>ResNet50</td>
   </tr>
   <tr>
     <td>SSL Contrastive Learning</td>
     <td>86.2</td>
+    <td>78.2</td>
     <td>ResNet50</td>
   </tr>
   <tr>
     <td>SSL Contrastive Learning - Best Model</td>
     <td>91.4</td>
+    <td>80.2</td>
     <td>ResNet34</td>
   </tr>
   <tr>
     <td>Ours</td>
     <td>93.0</td>
+    <td>87.0</td>
     <td>ViT Compact</td>
   </tr>
 </tbody>
