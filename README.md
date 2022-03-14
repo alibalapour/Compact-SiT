@@ -30,6 +30,7 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 
 
 <table class="tg">
+  <caption style="text-align:right"><b>Results of model on training on the three different mode on NCT-CRC Dataset</b></caption>
 <thead>
   <tr>
     <th class="tg-c3ow"></th>
@@ -68,6 +69,46 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 </tbody>
 </table>
 
+
+<table>
+  <caption style="text-align:right"><b>Results of model on training on the three different mode on BreakHis Dataset</b></caption>
+<thead>
+  <tr>
+    <th></th>
+    <th>Accuracy</th>
+    <th>Macro Recall</th>
+    <th>Macro Precision</th>
+    <th>Macro F1</th>
+    <th>Weighted F1</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>SSL+FT</td>
+    <td>0.88</td>
+    <td>0.87</td>
+    <td>0.87</td>
+    <td>0.87</td>
+    <td>0.88</td>
+  </tr>
+  <tr>
+    <td>SSL+LE</td>
+    <td>0.86</td>
+    <td>0.83</td>
+    <td>0.85</td>
+    <td>0.84</td>
+    <td>0.86</td>
+  </tr>
+  <tr>
+    <td>FT</td>
+    <td>0.85</td>
+    <td>0.82</td>
+    <td>0.84</td>
+    <td>0.83</td>
+    <td>0.85</td>
+  </tr>
+</tbody>
+</table>
 
 
 # Instaling Requirements
