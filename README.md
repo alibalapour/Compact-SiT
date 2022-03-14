@@ -111,6 +111,50 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 </table>
 
 
+<table>
+<thead>
+  <tr>
+    <th></th>
+    <th>Macro F1</th>
+    <th>Backbone</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Autoencoder</td>
+    <td>37.0</td>
+    <td>ResNet50</td>
+  </tr>
+  <tr>
+    <td>Colorization</td>
+    <td>80.2</td>
+    <td>ResNet50</td>
+  </tr>
+  <tr>
+    <td>CPCv2</td>
+    <td>80.1</td>
+    <td>ResNet50</td>
+  </tr>
+  <tr>
+    <td>SSL Contrastive Learning</td>
+    <td>86.2</td>
+    <td>ResNet50</td>
+  </tr>
+  <tr>
+    <td>SSL Contrastive Learning - Best Model</td>
+    <td>91.4</td>
+    <td>ResNet34</td>
+  </tr>
+  <tr>
+    <td>Ours</td>
+    <td>93.0</td>
+    <td>ViT Compact</td>
+  </tr>
+</tbody>
+</table>
+
+
+
 # Instaling Requirements
 > pip install --upgrade -r requirements.txt || true
 
