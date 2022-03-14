@@ -26,6 +26,49 @@ In the main paper ([SiT](https://arxiv.org/abs/2104.03602)), all three pre-text 
 After pre-training, the model is fine-tuned on some famous histopathology datasets like [NCT-CRC-HE-100K](https://zenodo.org/record/1214456) and [BreakHis](https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/) and tested on them. Results of these tests are provided in the next sections. Some of these tests are investigating the effect of pre-training on histopathology datasets and some of them focused on comparing SiT model with other self-supervised methods used in histopathology image classification.
 ...
 
+# Results
+
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-c3ow"></th>
+    <th class="tg-7btt">Accuracy</th>
+    <th class="tg-7btt">Macro Recall</th>
+    <th class="tg-fymr">Macro Precision</th>
+    <th class="tg-7btt">Macro F1</th>
+    <th class="tg-7btt">Weighted F1</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-7btt">SSL+FT</td>
+    <td class="tg-c3ow">0.94</td>
+    <td class="tg-c3ow">0.92</td>
+    <td class="tg-c3ow">0.92</td>
+    <td class="tg-c3ow">0.91</td>
+    <td class="tg-c3ow">0.94</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">SSL+LE</td>
+    <td class="tg-c3ow">0.91</td>
+    <td class="tg-c3ow">0.87</td>
+    <td class="tg-c3ow">0.89</td>
+    <td class="tg-c3ow">0.86</td>
+    <td class="tg-c3ow">0.9</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">FT</td>
+    <td class="tg-c3ow">0.84</td>
+    <td class="tg-c3ow">0.79</td>
+    <td class="tg-c3ow">0.82</td>
+    <td class="tg-c3ow">0.78</td>
+    <td class="tg-c3ow">0.84</td>
+  </tr>
+</tbody>
+</table>
+
+
 
 # Instaling Requirements
 > pip install --upgrade -r requirements.txt || true
