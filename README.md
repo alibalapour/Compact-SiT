@@ -114,7 +114,7 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 <table>
 <thead>
   <tr>
-    <th></th>
+    <th>Previous Works</th>
     <th>Macro F1</th>
     <th>Backbone</th>
   </tr>
