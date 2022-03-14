@@ -1,4 +1,4 @@
-# Compact SiT (Self-supervised vIsion Transformer) for HistoPathology Images
+# Compact SiT (Self-supervised vIsion Transformer) for Histopathology Images
 
 This repository contains the official PyTorch self-supervised pretraining, finetuning, and evaluation codes for compact SiT (Self-supervised image Transformer) with main focus on HistoPathology images. The SiT model uses three pre-text tasks for self-supervised learning: Reconstruction, Rotation Prediction, and Contrastive Learning. These three tasks are implemented on a Vision Transformer (ViT) model to gain advantages of the attention mechanism. In this work, we replaced the backbone of SiT model and replaced it with a more efficient and less data-hungry vision transformer named CCT (Compact Convolutional Transformer). Then we pre-trained and fine-tuned the new model on histopathology images to get better results on this kind of image.  
 
