@@ -149,6 +149,8 @@ def main(args):
         predicted_probs = np.array(predicted_probs)
         targets = np.array(targets)
 
+        print(predicted_probs)
+        
         if args.nb_classes == 2:  # binary classification evaluation
             print(classification_report(targets, predicted_output))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
