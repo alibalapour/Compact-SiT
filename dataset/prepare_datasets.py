@@ -140,11 +140,9 @@ def build_dataset(is_train, args):
         if is_train:
             path = os.path.join(args.dataset_location, 'BreakHis')
             gdown.download(id='1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz')
-            # !gdown --id 1xzaFz4isBsWCP0U0dI-uSy9yVH9owWcz
             shutil.rmtree(path, ignore_errors=True)
             with zipfile.ZipFile('./BreakHis.zip', 'r') as zipObj:
                 zipObj.extractall()
-            # !unzip -qq ./BreakHis.zip
             shutil.move('./content/BreakHis', path)
             shutil.rmtree('./content')
             os.remove('./BreakHis.zip')
@@ -154,11 +152,9 @@ def build_dataset(is_train, args):
         else:
             path = os.path.join(args.dataset_location, 'BreakHis_test')
             gdown.download(id='1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC')
-            # !gdown --id 1-0H_y_DlbWS0T5k_GfKma1MAiZSRsOTC
             shutil.rmtree(path, ignore_errors=True)
             with zipfile.ZipFile('./BreakHis_test.zip', 'r') as zipObj:
                 zipObj.extractall()
-            # !unzip -qq ./BreakHis_test.zip
             shutil.move('./content/BreakHis_test', path)
             shutil.rmtree('./content')
             os.remove('./BreakHis_test.zip')
