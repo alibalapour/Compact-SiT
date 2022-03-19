@@ -77,7 +77,7 @@ def main(args):
 
             print(data)
             names = data[2]
-            print(names)
+            print('names:', names)
 
     predicted_output = np.array(predicted_output)
     predicted_probs = np.array(predicted_probs)
