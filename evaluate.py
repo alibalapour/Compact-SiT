@@ -151,7 +151,6 @@ def main(args):
         
         if args.nb_classes == 2:  # binary classification evaluation
             print(classification_report(targets, predicted_output))
-            print("auc :", roc_auc_score(targets, predicted_probs))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
             print(predicted_probs, np.max(predicted_probs, dim=-1))
             bc_evaluation = BC_Evaluation()
