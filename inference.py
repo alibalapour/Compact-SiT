@@ -87,36 +87,6 @@ def main(args):
     dataframe.to_csv('results.csv')
 
 
-    # else:
-    #     outputs = []
-    #     labels = []
-    #     targets = []
-    #     predicted_output = []
-    #     with torch.no_grad():
-    #         for data in dataloader_test:
-    #             tensor = data[0]
-    #             tensor = tensor.to(args.device)
-    #             label = data[1]
-    #             targets += label.tolist()
-    #             label = label.to(args.device)
-    #             output = model(tensor)
-    #             outputs += output.tolist()
-    #             predicted = torch.argmax(output, 1)
-    #             predicted_output += predicted.tolist()
-    #     outputs = np.array(outputs)
-    #     tsne = TSNE()
-    #     outputs = tsne.fit_transform(outputs)
-    #
-    #     df = pd.DataFrame(outputs, columns=['x', 'y'])
-    #     df['target'] = targets
-    #     df.to_csv('dataframe.csv')
-    #
-    #     colors = [int(i % args.nb_classes) for i in df['target']]
-    #     plt.scatter(df['x'], df['y'], c=colors)
-    #     plt.savefig('plot.png', dpi=300, bbox_inches='tight')
-    #     plt.show()
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('SiT evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
