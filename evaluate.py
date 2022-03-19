@@ -83,12 +83,6 @@ class BC_Evaluation():
         y_hat = 1 - y_hat
         return recall_score(y, y_hat)
 
-    def roc_auc(self, y, y_hat_probs) -> float:
-        return roc_auc_score(y, y_hat_probs)
-
-    def aps(self, y, y_hat_probs) -> float:
-        return average_precision_score(y, y_hat_probs)
-
     def evaluate(self, y, y_hat, y_hat_probs):
         self.evaluation_functions = dict(
             accuracy=self.accuracy_,
@@ -153,7 +147,7 @@ def main(args):
             print(classification_report(targets, predicted_output))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
             bc_evaluation = BC_Evaluation()
-            print(bc_evaluation.evaluate(targets, predicted_output))
+            print(bc_evaluation.evaluate(targets, predicted_output, predicted_probs))
         else:  # multi classification evaluation
             print(classification_report(targets, predicted_output))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
