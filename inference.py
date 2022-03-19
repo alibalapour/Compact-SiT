@@ -45,13 +45,12 @@ def get_args_parser():
 def main(args):
     args.custom_val_dataset_path = args.custom_inference_dataset_path
     args.dataset_return_name = True
-    dataset_test, args.nb_classes = build_dataset(is_train=False, args=args)
+    dataset_test, _ = build_dataset(is_train=False, args=args)
     dataloader_test = torch.utils.data.DataLoader(dataset_test, batch_size=args.batch_size, shuffle=False)
 
     model = create_model(
         args.model,
         pretrained=False,
-        num_classes=args.nb_classes,
         training_mode=args.training_mode,
         representation_size=args.representation_size,
         feature_extractor=args.feature_extractor
