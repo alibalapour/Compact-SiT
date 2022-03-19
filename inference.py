@@ -75,6 +75,7 @@ def main(args):
             predicted_probs += predicted_prob.tolist()
             predicted_output += predicted.tolist()
 
+            print(data)
             names = data[2]
             print(names)
 
