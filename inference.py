@@ -77,7 +77,6 @@ def main(args):
             predicted_output += predicted.tolist()
 
             name = data[1]
-            print(name)
             names += name
     print(names)
     predicted_output = np.array(predicted_output)
