@@ -73,6 +73,9 @@ def main(args):
             predicted_probs += predicted_prob.tolist()
             predicted_output += predicted.tolist()
 
+            names = data[2]
+            print(names)
+
     predicted_output = np.array(predicted_output)
     predicted_probs = np.array(predicted_probs)
 
