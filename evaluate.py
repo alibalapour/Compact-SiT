@@ -154,6 +154,7 @@ def main(args):
             print("auc :", roc_auc_score(targets, predicted_probs))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
             bc_evaluation = BC_Evaluation()
+            print(predicted_probs)
             print(bc_evaluation.evaluate(targets, predicted_output, predicted_probs))
         else:  # multi classification evaluation
             print(classification_report(targets, predicted_output))
