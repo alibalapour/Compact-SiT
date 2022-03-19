@@ -226,7 +226,7 @@ def build_dataset(is_train, args):
             transform = build_transform(is_train=is_train, args=args)
             try:
                 dataset_folder = ImageFolder(args.custom_val_dataset_path)
-                dataset = CustomDataset(dataset_folder, transform)
+                dataset = CustomDataset(dataset_folder, transform, return_name=args.dataset_return_name)
             except:
                 raise ValueError('your custom validataion dataset has problem')
         nb_classes = len(dataset_folder.classes)
