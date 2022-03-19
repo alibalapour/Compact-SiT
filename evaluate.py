@@ -152,9 +152,7 @@ def main(args):
         if args.nb_classes == 2:  # binary classification evaluation
             print(classification_report(targets, predicted_output))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
-            print(predicted_probs, np.max(predicted_probs, axis=-1))
             bc_evaluation = BC_Evaluation()
-
             print(bc_evaluation.evaluate(targets, predicted_output, np.max(predicted_probs, axis=-1)))
         else:  # multi classification evaluation
             print(classification_report(targets, predicted_output))
