@@ -64,9 +64,9 @@ def main(args):
 
     predicted_output = []
     predicted_probs = []
+    names = []
     with torch.no_grad():
         for data in dataloader_test:
-            print(data)
             tensor = data[0][0]
             tensor = tensor.to(args.device)
             output_1, output_2 = model(tensor)
@@ -76,10 +76,10 @@ def main(args):
             predicted_probs += predicted_prob.tolist()
             predicted_output += predicted.tolist()
 
-            print(data)
-            names = data[2]
-            print('names:', names)
-
+            name = data[1]
+            print(name)
+            names += name
+    print(names)
     predicted_output = np.array(predicted_output)
     predicted_probs = np.array(predicted_probs)
 
