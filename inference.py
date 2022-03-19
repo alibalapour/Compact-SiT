@@ -66,7 +66,8 @@ def main(args):
     predicted_probs = []
     with torch.no_grad():
         for data in dataloader_test:
-            tensor = data[0]
+            print(data)
+            tensor = data[0][0]
             tensor = tensor.to(args.device)
             output_1, output_2 = model(tensor)
             output = (output_1 + output_2) / 2
