@@ -54,6 +54,7 @@ def main(args):
         args.model,
         pretrained=False,
         training_mode=args.training_mode,
+        num_classes=args.nb_class
         representation_size=args.representation_size,
         feature_extractor=args.feature_extractor
     )
