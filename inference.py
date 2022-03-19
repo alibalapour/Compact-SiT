@@ -83,7 +83,7 @@ def main(args):
     predicted_output = np.array(predicted_output)
     predicted_probs = np.array(predicted_probs)
 
-    dataframe = pd.DataFrame({'name': names, 'label': predicted_output, 'prob': predicted_probs})
+    dataframe = pd.DataFrame({'name': names, 'label': predicted_output, 'prob': np.max(predicted_probs, axis=-1)})
     dataframe.to_csv('results.csv')
 
 
