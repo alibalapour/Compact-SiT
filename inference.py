@@ -30,6 +30,8 @@ def get_args_parser():
                         help='path of the fine-tuned model')
     parser.add_argument('--dataset-location', default='downloaded_datasets', type=str,
                         help='dataset location - dataset will be downloaded to this folder')
+    parser.add_argument('--nb-class', default=2, type=int,
+                        help='number of classes in fine-tuned model')
 
     # related to linear evaluation
     parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
