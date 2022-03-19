@@ -22,5 +22,5 @@ class CustomDataset(Dataset):
         X = Image.fromarray(X.astype(np.uint8))
         target = self.data[idx][1]
         if self.return_name:
-            return getItem(X, target, self.transform, self.training_mode), self.data.imgs[idx]
+            return getItem(X, target, self.transform, self.training_mode), self.data.imgs[idx][0]
         return getItem(X, target, self.transform, self.training_mode)
