@@ -6,6 +6,7 @@ import torch
 from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
+from tqdm import tqdm
 from timm.models import create_model
 
 from dataset.prepare_datasets import build_dataset
@@ -66,7 +67,7 @@ def main(args):
     predicted_probs = []
     names = []
     with torch.no_grad():
-        for data in dataloader_test:
+        for data in tqdm(dataloader_test):
             tensor = data[0][0]
             tensor = tensor.to(args.device)
             output_1, output_2 = model(tensor)
@@ -75,13 +76,15 @@ def main(args):
             predicted_prob = torch.softmax(output, 1)
             predicted_probs += predicted_prob.tolist()
             predicted_output += predicted.tolist()
-
             name = data[1]
             names += name
-    print(names)
+
+    names = np.array(names)
     predicted_output = np.array(predicted_output)
     predicted_probs = np.array(predicted_probs)
 
+    dataframe = pd.Dataframe({'name':names, 'label':predicted_output, 'prob':predicted_probs})
+    dataframe.to_csv('results.csv')
 
 
     # else:
