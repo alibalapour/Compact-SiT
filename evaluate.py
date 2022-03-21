@@ -170,7 +170,7 @@ def main(args):
         targets = []
         predicted_output = []
         with torch.no_grad():
-            for data in dataloader_test:
+            for data in tqdm(dataloader_test):
                 tensor = data[0]
                 tensor = tensor.to(args.device)
                 label = data[1]
