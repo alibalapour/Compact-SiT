@@ -4,6 +4,7 @@ import numpy as np
 import time
 import torch
 from pathlib import Path
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 import pandas as pd
@@ -32,6 +33,8 @@ def get_args_parser():
     parser.add_argument('--input-size', default=224, type=int, help='images input size')
     parser.add_argument('--custom_test_dataset_path', default='', type=str,
                         help='path of custom test dataset')
+    parser.add_argument('--dataset_return_name', default=False)
+    
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
     parser.add_argument('--dataset', default='Custom', choices=['Custom', 'BreakHis'],
@@ -129,7 +132,7 @@ def main(args):
         predicted_probs = []
         targets = []
         with torch.no_grad():
-            for data in dataloader_test:
+            for data in tqdm(dataloader_test):
                 tensor = data[0]
                 tensor = tensor.to(args.device)
                 label = data[1]

@@ -93,7 +93,7 @@ def get_args_parser():
     # Augmentation parameters
     parser.add_argument('--color-jitter', type=float, default=0.4, metavar='PCT',
                         help='Color jitter factor (default: 0.4)')
-    parser.add_argument('--aa', type=str, default='v0', metavar='NAME',
+    parser.add_argument('--aa', type=str, default='', metavar='NAME',
                         help='Use AutoAugment policy. "v0" or "original". " + \
                              "(default: rand-m9-mstd0.5-inc1)'),
     parser.add_argument('--smoothing', type=float, default=0.1, help='Label smoothing (default: 0.1)')
@@ -142,6 +142,7 @@ def get_args_parser():
                         help='path of custom validation dataset')
     parser.add_argument('--validation-split', type=float, default=None,
                         help='fraction of the training data to be used as validation data')
+    parser.add_argument('--dataset_return_name', default=False)
 
     parser.add_argument('--num_imgs_per_cat', default=None, type=int, help='Number of images per training category')
     parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
