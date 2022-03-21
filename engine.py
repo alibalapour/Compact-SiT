@@ -1,22 +1,17 @@
 import math
 import sys
 from pathlib import Path
-
 from typing import Iterable, Optional
-
 import torch
-
-from timm.data import Mixup
-from timm.utils import accuracy, ModelEma
-
 import utils
 import numpy as np
 import os
 import torchvision
 
+from timm.data import Mixup
+from timm.utils import accuracy, ModelEma
 import kornia
 from numpy.random import randint
-
 import torch.nn.functional as F
 
 
@@ -199,7 +194,7 @@ def train_finetune(model: torch.nn.Module, criterion,
 
         with torch.cuda.amp.autocast():
             rot_p, contrastive_p = model(images)
-            if criterion == 'CrossEntropyLoss()':
+            if isinstance(criterion, torch.nn.CrossEntropyLoss):
                 targets = torch.argmax(targets, dim=1)
             loss = criterion(rot_p , targets) + criterion(contrastive_p, targets)
 
