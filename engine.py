@@ -201,7 +201,7 @@ def train_finetune(model: torch.nn.Module, criterion,
             rot_p, contrastive_p = model(images)
             print(rot_p.long())
             print(contrastive_p.long())
-            print(targets)
+            print(targets.dtype)
             loss = criterion(rot_p, targets) + criterion(contrastive_p, targets)
 
         loss_value = loss.item()
