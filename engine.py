@@ -199,8 +199,8 @@ def train_finetune(model: torch.nn.Module, criterion,
 
         with torch.cuda.amp.autocast():
             rot_p, contrastive_p = model(images)
-            print(torch.argmax(targets))
-            loss = criterion(rot_p + contrastive_p, torch.argmax(targets))
+            print(torch.argmax(targets, dim=1))
+            loss = criterion(rot_p + contrastive_p, torch.argmax(targets, dim=1))
 
         loss_value = loss.item()
 
