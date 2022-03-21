@@ -377,7 +377,7 @@ def main(args):
     else:
         # generating class weights for CrossEntropyLoss
 
-        criterion = torch.nn.CrossEntropyLoss()
+        criterion = torch.nn.CrossEntropyLoss(weight=torch.tensor([1.8, 1]))
 
     # Get output directory to save model and logs
     output_dir = Path(args.output_dir)
