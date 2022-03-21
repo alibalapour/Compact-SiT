@@ -231,8 +231,6 @@ def build_dataset(is_train, args):
                 raise ValueError('your custom validataion dataset has problem')
         nb_classes = len(dataset_folder.classes)
 
-    print('------------------------- ', dataset_folder.targets)
-    print('------------------------- ', dataset.targets)
     return dataset, nb_classes
 
 
