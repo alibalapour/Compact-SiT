@@ -376,7 +376,6 @@ def main(args):
         criterion = SoftTargetCrossEntropy()
     else:
         # generating class weights for CrossEntropyLoss
-        dataset_train
 
         criterion = torch.nn.CrossEntropyLoss()
 
