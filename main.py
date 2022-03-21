@@ -373,10 +373,11 @@ def main(args):
     if args.training_mode == 'SSL':
         criterion = MTL_loss(args.device, args.batch_size)
     elif args.training_mode == 'finetune' and args.mixup > 0.:
-        print('yes ---- SoftTargetCrossEntropy')
         criterion = SoftTargetCrossEntropy()
     else:
-        print('no ---- CrossEntropyLoss')
+        # generating class weights for CrossEntropyLoss
+        dataset_train
+
         criterion = torch.nn.CrossEntropyLoss()
 
     # Get output directory to save model and logs
