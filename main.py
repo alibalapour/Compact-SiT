@@ -375,9 +375,7 @@ def main(args):
     elif args.training_mode == 'finetune' and args.mixup > 0.:
         criterion = SoftTargetCrossEntropy()
     else:
-        # generating class weights for CrossEntropyLoss
-
-        criterion = torch.nn.CrossEntropyLoss(weight=torch.tensor([1.7001, 0.7083]).to(args.device))
+        criterion = torch.nn.CrossEntropyLoss()
 
     # Get output directory to save model and logs
     output_dir = Path(args.output_dir)
