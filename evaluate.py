@@ -169,7 +169,7 @@ def main(args):
             print("weighted f1 :", f1_score(targets, predicted_output, average="weighted"))
         
         if args.plot_ROC:
-            skplt.metrics.plot_roc_curve(targets, predicted_output)
+            skplt.metrics.plot_roc_curve(targets, predicted_probs)
             plt.savefig('ROCurve.png')
             plt.show()
     else:
