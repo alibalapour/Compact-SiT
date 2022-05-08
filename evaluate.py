@@ -6,6 +6,8 @@ import torch
 from pathlib import Path
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+import scikitplot as skplt
+import matplotlib.pyplot as plt
 
 import pandas as pd
 from sklearn.manifold import TSNE
@@ -50,6 +52,8 @@ def get_args_parser():
     parser.add_argument('--representation-size', default=None, type=int, help='nonLinear head')
 
     parser.add_argument('--feature-extractor', action='store_true', default=False,
+                        help='model acts like an feature extractor')
+    parser.add_argument('--plot-ROC', action='store_true', default=False,
                         help='model acts like an feature extractor')
     
     return parser
@@ -163,7 +167,11 @@ def main(args):
             print("auc macro :", roc_auc_score(targets, predicted_probs, average="macro", multi_class="ovr"))
             print("macro f1 :", f1_score(targets, predicted_output, average="macro"))
             print("weighted f1 :", f1_score(targets, predicted_output, average="weighted"))
-    
+        
+        if args.plot_ROC:
+            skplt.metrics.plot_roc_curve(targets, predicted_output)
+            plt.savefig('ROCurve.png')
+            plt.show()
     else:
         outputs = []
         labels = []
@@ -194,6 +202,7 @@ def main(args):
         plt.show()
         
 
+        
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('SiT evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
