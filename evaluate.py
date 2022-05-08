@@ -157,12 +157,12 @@ def main(args):
         targets = np.array(targets)
         
         if args.nb_classes == 2:  # binary classification evaluation
-            print(classification_report(targets, predicted_output))
+            print(classification_report(targets, predicted_output, digits=4))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
             bc_evaluation = BC_Evaluation()
             print(bc_evaluation.evaluate(targets, predicted_output, np.max(predicted_probs, axis=-1)))
         else:  # multi classification evaluation
-            print(classification_report(targets, predicted_output))
+            print(classification_report(targets, predicted_output, digits=4))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
             print("auc macro :", roc_auc_score(targets, predicted_probs, average="macro", multi_class="ovr"))
             print("macro f1 :", f1_score(targets, predicted_output, average="macro"))
