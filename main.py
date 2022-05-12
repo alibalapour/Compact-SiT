@@ -288,7 +288,7 @@ def main(args):
     model = create_model(
         args.model,
         pretrained=False,
-        patch_size = args.patch_size
+        patch_size = args.patch_size,
         num_classes=args.nb_classes,
         drop_rate=args.drop,
         drop_path_rate=args.drop_path,
