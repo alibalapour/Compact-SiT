@@ -91,29 +91,6 @@ class Block(nn.Module):
         return x
 
 
-# class PatchEmbed(nn.Module):
-#     """ Image to Patch Embedding
-#     """
-#     def __init__(self, img_size=224, patch_size=16, in_chans=3, embed_dim=768):
-#         super().__init__()
-#         img_size = to_2tuple(img_size)
-#         patch_size = to_2tuple(patch_size)
-#         num_patches = (img_size[1] // patch_size[1]) * (img_size[0] // patch_size[0])
-#         self.img_size = img_size
-#         self.patch_size = patch_size
-#         self.num_patches = num_patches
-
-#         self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
-
-#     def forward(self, x):
-#         B, C, H, W = x.shape
-#         # FIXME look at relaxing size constraints
-#         assert H == self.img_size[0] and W == self.img_size[1], \
-#             f"Input image size ({H}*{W}) doesn't match model ({self.img_size[0]}*{self.img_size[1]})."
-#         x = self.proj(x).flatten(2).transpose(1, 2)
-#         return x
-
-
 class Tokenizer(nn.Module):
     def __init__(self,
                  kernel_size, stride, padding,
@@ -139,7 +116,7 @@ class Tokenizer(nn.Module):
                           padding=(padding, padding), bias=conv_bias),
                 nn.Identity() if activation is None else activation(),
                 nn.MaxPool2d(kernel_size=pooling_kernel_size,
-                             stride=pooling_stride,
+                             stride=pooling_stride[i],    # to support patch size 8 or 16 we use a list as pooling_stride 
                              padding=pooling_padding) if max_pool else nn.Identity()
             )
                 for i in range(n_conv_layers)
@@ -208,13 +185,21 @@ class VisionTransformer_SiT(nn.Module):
         norm_layer = norm_layer or partial(nn.LayerNorm, eps=1e-6)
         act_layer = act_layer or nn.GELU
 
-        #         self.patch_embed = embed_layer(
-        #             img_size=img_size, patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim)
-
-        self.patch_embed = Tokenizer(kernel_size=7, stride=2, padding=3,
+        # self.patch_embed = embed_layer(
+        #     img_size=img_size, patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim)
+        
+        
+        # to support patch size of 8 and 16
+        patch_embed_pooling_stride = None
+        if patch_size == 16:
+            patch_embed_pooling_stride = [2, 2]
+        elif patch_size == 8:
+            patch_embed_pooling_stride = [2, 1]
+            
+        self.patch_embed = Tokenizer(kernel_size=7, stride=2, padding=3, pooling_stride=patch_embed_pooling_stride,
                                      n_conv_layers=2, n_output_channels=embed_dim,
                                      activation=nn.ReLU, max_pool=True, conv_bias=False)
-
+        
         self.rot_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
         self.contrastive_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
 
@@ -302,7 +287,6 @@ class VisionTransformer_SiT(nn.Module):
     def forward_features(self, x):
         B = x.shape[0]
         x = self.patch_embed(x)
-
         rot_token = self.rot_token.expand(B, -1, -1)
         contrastive_token = self.contrastive_token.expand(B, -1, -1)
         x = torch.cat((rot_token, contrastive_token, x), dim=1)
@@ -310,6 +294,7 @@ class VisionTransformer_SiT(nn.Module):
         x = self.pos_drop(x + self.pos_embed)
         x = self.blocks(x)
         x = self.norm(x)
+        
         return x
 
     def forward(self, x):
@@ -386,10 +371,9 @@ def checkpoint_filter_fn(state_dict, model):
 
 
 @register_model
-def SiT_compact_patch16_224(pretrained=False, **kwargs):
+def SiT_compact_patch16_224(pretrained=False, patch_size=16, **kwargs):
     model = VisionTransformer_SiT(
-        patch_size=16, embed_dim=192, depth=14, num_heads=6, mlp_ratio=3, qkv_bias=True,
+        patch_size=patch_size, embed_dim=192, depth=14, num_heads=6, mlp_ratio=3, qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
     model.default_cfg = _cfg()
     return model
-
