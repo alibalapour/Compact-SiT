@@ -32,7 +32,7 @@ def get_args_parser():
     parser.add_argument('--epochs', default=501, type=int)
 
     # Model parameters
-    parser.add_argument('--model', default='compact_SiT_224', type=str, metavar='MODEL',
+    parser.add_argument('--model', default='Compact_SiT_224', type=str, metavar='MODEL',
                         help='Name of model to train')
     parser.add_argument('--input-size', default=224, type=int,
                         help='images input size')
