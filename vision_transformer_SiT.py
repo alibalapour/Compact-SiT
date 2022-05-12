@@ -371,7 +371,7 @@ def checkpoint_filter_fn(state_dict, model):
 
 
 @register_model
-def SiT_compact_patch16_224(pretrained=False, **kwargs):
+def Compact_SiT_224(pretrained=False, **kwargs):
     model = VisionTransformer_SiT(
         embed_dim=192, depth=14, num_heads=6, mlp_ratio=3, qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
