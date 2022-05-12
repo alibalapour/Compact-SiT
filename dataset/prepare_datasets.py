@@ -95,7 +95,7 @@ def build_dataset(is_train, args):
     elif args.dataset == 'UH_main':  # Main Dataset for SSL  - ~600k
         if is_train:
             path = os.path.join(args.dataset_location, 'UH_main')
-            gdown.download(id='1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m')
+            gdown.download(id='1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J')
             # !gdown --id 1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J
             # !gdown --id 1Cipc0LflqReenVwPrAldZ3ZR_11fLy5m
             shutil.rmtree(path, ignore_errors=True)
