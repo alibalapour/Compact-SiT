@@ -32,9 +32,12 @@ def get_args_parser():
     parser.add_argument('--epochs', default=501, type=int)
 
     # Model parameters
-    parser.add_argument('--model', default='SiT_compact_patch16_224', type=str, metavar='MODEL',
+    parser.add_argument('--model', default='compact_SiT_224', type=str, metavar='MODEL',
                         help='Name of model to train')
-    parser.add_argument('--input-size', default=224, type=int, help='images input size')
+    parser.add_argument('--input-size', default=224, type=int,
+                        help='images input size')
+    parser.add_argument('--patch-size', default=16, type=int, choices=[8, 16],
+                        help='input image patche size')
 
     parser.add_argument('--drop', type=float, default=0.0, metavar='PCT',
                         help='Dropout rate (default: 0.)')
@@ -285,6 +288,7 @@ def main(args):
     model = create_model(
         args.model,
         pretrained=False,
+        patch_size = args.patch_size
         num_classes=args.nb_classes,
         drop_rate=args.drop,
         drop_path_rate=args.drop_path,
