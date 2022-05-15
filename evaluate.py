@@ -39,7 +39,7 @@ def get_args_parser():
     
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
-    parser.add_argument('--dataset', default='Custom', choices=['Custom', 'BreakHis'],
+    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR100', 'CIFAR10', 'STL10', 'TinyImageNet', 'UH_mini', 'UH_main', 'NCT', 'BreakHis', 'MHIST', 'Custom'],
                         type=str, help='dataset name')
     parser.add_argument('--model-path', default='', type=str,
                         help='path of the fine-tuned model')
