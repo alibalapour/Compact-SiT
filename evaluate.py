@@ -27,7 +27,7 @@ from sklearn.metrics import RocCurveDisplay, roc_curve, auc
 
 def get_args_parser():
     parser = argparse.ArgumentParser('SiT training and evaluation script', add_help=False)
-    parser.add_argument('--model', default='SiT_compact_patch16_224', type=str, metavar='MODEL',
+    parser.add_argument('--model', default='Compact_SiT_224', type=str, metavar='MODEL',
                         help='Name of model to train')
     parser.add_argument('--training-mode', default='finetune', choices=['finetune'],
                         type=str, help='training mode')
