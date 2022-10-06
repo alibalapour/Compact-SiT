@@ -18,6 +18,9 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
   <li>Adding pieces of code for evaluating the results of the model</li>
 </ol>
 
+# Dataset
+To pre-train the model in a self-supervised manner, we need a collection of unlabeled images, which should be similar to our downstream task's images. As there is not any proper unlabeled dataset of histopathology images, we created our own. To find related datasets, we used dataset tables of <a href='https://arxiv.org/abs/2011.13971'>this</a> and <a href='https://arxiv.org/abs/2005.02561'>this</a> papers.
+
 # Procedure
 First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
 
