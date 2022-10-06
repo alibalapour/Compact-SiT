@@ -21,29 +21,27 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
 # Dataset
 To pre-train the model in a self-supervised manner, we need a collection of unlabeled images, which should be similar to our downstream task's images. As there is not any proper unlabeled dataset of histopathology images, we created our own. To find related datasets, we used dataset tables of <a href='https://arxiv.org/abs/2011.13971'>this</a> and <a href='https://arxiv.org/abs/2005.02561'>this</a> papers.
 
-# Procedure
-First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
-
 <figure >
   <img src="https://user-images.githubusercontent.com/42287060/194409925-ba4083e4-5efd-407b-84b2-c09bdd2d8571.png" class="center" alt="drawing"/>
   <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
 </figure>
 
-<br>
+# Procedure
+First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
 
+# SiT
 As mentioned before, the pre-training consists of three pre-texts. 
 - The original image corrupts with random drop, random replace, color distortion, blurring, and gray-scale in the reconstruction pre-text. Then the corrupted image is converted to patches and is fed to Transformer. After feedforward, the output of the last encoder in the Transformer is combined and makes a reconstructed image. Then with a loss function difference between the reconstructed image and the original image is measured.
 - The second pre-text task is rotating the corrupted image randomly with 4 degrees (0, 90, 180, 270) and adding an extra token (like cls token) to predict rotation. A loss function is used to learn the rotation of images in the pre-training dataset.
 - The third task is contrastive learning. The main focus of this method is to learn image embeddings that are invariant to different augmented views of the same image while being discriminative among different images. In each mini-batch, two images are generated from one image, and a special loss function is defined for contrastive learning. For more information, check this [paper](https://arxiv.org/abs/2002.05709).  <br>
 
-
 In the main paper ([SiT](https://arxiv.org/abs/2104.03602)), all three pre-text tasks are explained completely. <br>
 
-After pre-training, the model is fine-tuned on some famous histopathology datasets like [NCT-CRC-HE-100K](https://zenodo.org/record/1214456) and [BreakHis](https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/) and tested on them. Results of these tests are provided in the next sections. Some of these tests are investigating the effect of pre-training on histopathology datasets and some of them focused on comparing SiT model with other self-supervised methods used in histopathology image classification.
 ...
 
 # Results
 
+After pre-training, the model is fine-tuned on some famous histopathology datasets like [NCT-CRC-HE-100K](https://zenodo.org/record/1214456) and [BreakHis](https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/) and tested on them. Main focus of these tests are investigating the effect of pre-training on histopathology datasets and comparing cSiT model with other self-supervised methods used on histopathology image classification.
 
 <table class="tg">
   <caption style="text-align:right"><b>Results of model on training on the three different mode on NCT-CRC Dataset</b></caption>
