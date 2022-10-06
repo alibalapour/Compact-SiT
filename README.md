@@ -22,8 +22,7 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
 First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
 
 <figure >
-<!--   <img src="https://user-images.githubusercontent.com/42287060/142759501-a98a6d7a-fe6b-4063-b7ff-c88aedc04a7a.png" class="center" alt="drawing" width="500"/> -->
-  <img src="https://user-images.githubusercontent.com/42287060/143192349-45f49221-67b5-4737-85cb-2a311dade439.png" class="center" alt="drawing" width="500"/>
+  <img src="https://user-images.githubusercontent.com/42287060/194409925-ba4083e4-5efd-407b-84b2-c09bdd2d8571.png" class="center" alt="drawing"/>
   <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
 </figure>
 
