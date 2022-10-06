@@ -1,8 +1,22 @@
-# Compact SiT (Self-supervised vIsion Transformer) for Histopathology Images
-
-This repository contains the official PyTorch self-supervised pretraining, finetuning, and evaluation codes for compact SiT (Self-supervised image Transformer) with main focus on HistoPathology images. The SiT model uses three pre-text tasks for self-supervised learning: Reconstruction, Rotation Prediction, and Contrastive Learning. These three tasks are implemented on a Vision Transformer (ViT) model to gain advantages of the attention mechanism. In this work, we replaced the backbone of SiT model and replaced it with a more efficient and less data-hungry vision transformer named CCT (Compact Convolutional Transformer). Then we pre-trained and fine-tuned the new model on histopathology images to get better results on this kind of image.  
+# Introduction
+This repository contains the PyTorch self-supervised pretraining, fine-tuning, and evaluation codes for compact self-supervised vision transformer (cSiT) with the main focus on Histopathology image classification. The SiT model uses three pre-text tasks for self-supervised learning:
+<ul>
+  <li>Reconstruction</li>
+  <li>Rotation Prediction</li>
+  <li>Contrastive Learning</li>
+</ul>
+These three tasks are implemented on a Vision Transformer (ViT) backbone to gain advantages of the attention mechanism. In this work, we replaced the backbone of the SiT model with a more efficient, less data-hungry vision transformer known as Compact Convolutional Transformer (CCT). Then we pre-trained and fine-tuned the new model on histopathology images to get better results on this kind of medical images.
 
 This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/SiT) with some modifications and improvements. Some features were added and the backbone of the model was replaced with [CCT-14/7x2](https://github.com/SHI-Labs/Compact-Transformers)(with some changes).
+
+# Contributions
+<ol>
+  <li>Gathering a large and diverse dataset of unlabeled histopathology images (consists of ~600k images from famous histopathology datasets)</li>
+  <li>RUsing Compact Convolutional Transformer, which is a compact vision transformer, as a backbone</li>
+  <li>Compared to SOTA self-supervised models, getting competitive results on two famous histopathology image classification datasets, NCT-CRC and BreakHis</li>
+  <li>Testing the model in a semi-supervised setting on the NCT-CRC dataset</li>
+  <li>Adding pieces of code for evaluating the results of the model</li>
+</ol>
 
 # Procedure
 First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
