@@ -26,43 +26,7 @@ To pre-train the model in a self-supervised manner, we need a collection of unla
   <figcaption>Fig.1 - sample of unlabeled dataset</figcaption>
 </figure>
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
-.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-.tg .tg-mqa1{border-color:#000000;font-weight:bold;text-align:center;vertical-align:top}
-</style>
-<table class="tg" style="undefined;table-layout: fixed; width: 391px">
-<colgroup>
-<col style="width: 224px">
-<col style="width: 167px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-7btt">Name</th>
-    <th class="tg-mqa1">Organ &amp; Pathology</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow"><a href="https://ieeexplore.ieee.org/document/7399414" target="_blank" rel="noopener noreferrer">Warwick_CRC</a></td>
-    <td class="tg-wp8o">Colorectal Cancer</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow"><a href="http://www.andrewjanowczyk.com/deep-learning/" target="_blank" rel="noopener noreferrer">Nuclei Segmentation(Janowczyk1)</a></td>
-    <td class="tg-wp8o">Breast Cancer</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow"></td>
-    <td class="tg-wp8o"></td>
-  </tr>
-</tbody>
-</table>
+List of reference datasets are available at this markdown.
 
 # Procedure
 First, we pre-trained the SiT-Compact model on a diverse unlabeled histopathology dataset consisting of 600k images derived from known datasets (e.g., PatchCamelyon, ICIAR2018, TUPAC2016 Mitosis, and …). this dataset is available in this [link](https://drive.google.com/file/d/1JoJxnY4zPuvjVGIALE_UCpCX97i6HA8J/view?usp=sharing).
