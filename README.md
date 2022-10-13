@@ -39,6 +39,14 @@ As mentioned before, the pre-training consists of three pre-texts.
 
 In the main paper ([SiT](https://arxiv.org/abs/2104.03602)), all three pre-text tasks are explained completely. <br>
 
+
+<figure >
+  <img src="https://user-images.githubusercontent.com/42287060/195558798-7b60b14f-51d6-4ead-bd7f-8d00d2a91f79.svg" class="center" alt="drawing"/>
+  <figcaption>Fig.2 - structure of compact Self-supervised Vision Transformer</figcaption>
+</figure>
+
+
+
 ...
 
 # Results
