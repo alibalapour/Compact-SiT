@@ -216,5 +216,5 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 **Note: assign the --dataset_location parameter to the location of the downloaded dataset**
 
 # Evaluate
-> !python evaluate.py --batch-size 180 --dataset 'Custom' --custom_test_dataset_path '<<path/to/test_dataset>>' --model-path '<<path/to/finetuned_model>>'
+> python evaluate.py --batch-size 180 --dataset 'Custom' --custom_test_dataset_path '<<path/to/test_dataset>>' --model-path '<<path/to/finetuned_model>>'
 
