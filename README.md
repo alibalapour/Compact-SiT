@@ -47,7 +47,7 @@ In the main paper ([SiT](https://arxiv.org/abs/2104.03602)), all three pre-text 
 
 
 # Compact Convolutional Transformer (CCT)
-We used [CCT-14/7×2](https://arxiv.org/abs/2104.05704), with some modifications, as the backbone of the model. By reducing embeddings in the transfomer, we had a compact and small vision transformer with around 6 million parameters. For comparison, ViT-Base has around 86 million parameters. The code of the CCT was adapted from [this repository](https://github.com/SHI-Labs/Compact-Transformers). 
+We used [CCT-14/7×2](https://arxiv.org/abs/2104.05704), with some modifications, as the backbone of the model. By reducing embeddings in the transfomer, we had a compact and small vision transformer with around 6 million parameters. For comparison, ViT-Base has around 86 million parameters. The code of the CCT was adapted from [this repository](https://github.com/SHI-Labs/Compact-Transformers). In CCT, the final representations of encoder are given to a sequence pool modeule and prediction is produced by all of tokens. Also, a convolutional embedder is used to generate patch embeddings.   
 
 # Results
 
