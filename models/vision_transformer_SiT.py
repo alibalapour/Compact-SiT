@@ -116,7 +116,7 @@ class Tokenizer(nn.Module):
                           padding=(padding, padding), bias=conv_bias),
                 nn.Identity() if activation is None else activation(),
                 nn.MaxPool2d(kernel_size=pooling_kernel_size,
-                             stride=pooling_stride[i],    # to support patch size 8 or 16 we use a list as pooling_stride 
+                             stride=pooling_stride[i],  # to support patch size 8 or 16 we use a list as pooling_stride
                              padding=pooling_padding) if max_pool else nn.Identity()
             )
                 for i in range(n_conv_layers)
@@ -187,19 +187,18 @@ class VisionTransformer_SiT(nn.Module):
 
         # self.patch_embed = embed_layer(
         #     img_size=img_size, patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim)
-        
-        
+
         # to support patch size of 8 and 16
         patch_embed_pooling_stride = None
         if patch_size == 16:
             patch_embed_pooling_stride = [2, 2]
         elif patch_size == 8:
             patch_embed_pooling_stride = [2, 1]
-            
+
         self.patch_embed = Tokenizer(kernel_size=7, stride=2, padding=3, pooling_stride=patch_embed_pooling_stride,
                                      n_conv_layers=2, n_output_channels=embed_dim,
                                      activation=nn.ReLU, max_pool=True, conv_bias=False)
-        
+
         self.rot_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
         self.contrastive_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
 
@@ -233,7 +232,7 @@ class VisionTransformer_SiT(nn.Module):
 
         self.seq_pool = seq_pool
         self.last_fc = nn.Linear(embed_dim, num_classes)
-        
+
         self.feature_extractor = feature_extractor
 
         # Classifier head(s)
@@ -294,7 +293,7 @@ class VisionTransformer_SiT(nn.Module):
         x = self.pos_drop(x + self.pos_embed)
         x = self.blocks(x)
         x = self.norm(x)
-        
+
         return x
 
     def forward(self, x):
@@ -304,10 +303,10 @@ class VisionTransformer_SiT(nn.Module):
             x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
             x = self.last_fc(x)
             return x / 2, x / 2
-        
+
         if self.feature_extractor:
-            return (x[:, 0] + x[:, 1]) / 2 
-        
+            return (x[:, 0] + x[:, 1]) / 2
+
         x_rot = self.pre_logits_rot(x[:, 0])
         x_rot = self.rot_head(x_rot)
 

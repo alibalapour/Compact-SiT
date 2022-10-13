@@ -10,7 +10,7 @@ from tqdm import tqdm
 from timm.models import create_model
 
 from dataset.prepare_datasets import build_dataset
-import vision_transformer_SiT
+from models import vision_transformer_SiT
 
 
 def get_args_parser():

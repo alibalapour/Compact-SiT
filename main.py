@@ -16,12 +16,12 @@ from timm.optim import create_optimizer
 from timm.utils import NativeScaler, get_state_dict, ModelEma
 
 from dataset.prepare_datasets import build_dataset
-from engine import train_SSL, evaluate_SSL, train_finetune, evaluate_finetune
-from losses import MTL_loss
+from utils.utils import train_SSL, evaluate_SSL, train_finetune, evaluate_finetune
+from utils.utils import MTL_loss
 
-from samplers import RASampler
-import vision_transformer_SiT
-import utils
+from utils.utils import RASampler
+from models import vision_transformer_SiT
+from utils import utils
 
 import random
 
@@ -135,7 +135,9 @@ def get_args_parser():
     parser.add_argument('--finetune', default='', help='finetune from checkpoint')
 
     # Dataset parameters
-    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR100', 'CIFAR10', 'STL10', 'TinyImageNet', 'UH_mini', 'UH_main', 'NCT', 'BreakHis', 'MHIST', 'Custom'],
+    parser.add_argument('--dataset', default='CIFAR10',
+                        choices=['CIFAR100', 'CIFAR10', 'STL10', 'TinyImageNet', 'UH_mini', 'UH_main', 'NCT',
+                                 'BreakHis', 'MHIST', 'Custom'],
                         type=str, help='dataset name')
     parser.add_argument('--dataset_location', default='downloaded_datasets', type=str,
                         help='dataset location - dataset will be downloaded to this folder')
@@ -232,9 +234,8 @@ def main(args):
         dataset_val, _ = build_dataset(is_train=False, args=args)
     else:
         if args.dataset != 'Custom':
-            raise('validation-split argument is only for custom datasets.')
+            raise ('validation-split argument is only for custom datasets.')
         dataset_train, dataset_val, args.nb_classes = build_dataset(is_train=True, args=args)
-
 
     if args.dataset_ratio:
         dataset_len = len(dataset_train)
@@ -288,7 +289,7 @@ def main(args):
     model = create_model(
         args.model,
         pretrained=False,
-        patch_size = args.patch_size,
+        patch_size=args.patch_size,
         num_classes=args.nb_classes,
         drop_rate=args.drop,
         drop_path_rate=args.drop_path,

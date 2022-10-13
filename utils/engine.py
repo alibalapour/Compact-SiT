@@ -196,7 +196,7 @@ def train_finetune(model: torch.nn.Module, criterion,
             rot_p, contrastive_p = model(images)
             if isinstance(criterion, torch.nn.CrossEntropyLoss):
                 targets = torch.argmax(targets, dim=1)
-            loss = criterion(rot_p , targets) + criterion(contrastive_p, targets)
+            loss = criterion(rot_p, targets) + criterion(contrastive_p, targets)
 
         loss_value = loss.item()
 
@@ -326,4 +326,3 @@ def evaluate_finetune(data_loader, model, device):
           .format(top1=metric_logger.acc1, top5=metric_logger.acc5, losses=metric_logger.loss))
 
     return {k: meter.global_avg for k, meter in metric_logger.meters.items()}
-

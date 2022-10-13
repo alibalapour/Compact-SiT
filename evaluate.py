@@ -13,7 +13,7 @@ import pandas as pd
 from sklearn.manifold import TSNE
 
 from dataset.prepare_datasets import build_dataset
-import vision_transformer_SiT
+from models import vision_transformer_SiT
 
 from timm.models import create_model
 
@@ -36,16 +36,18 @@ def get_args_parser():
     parser.add_argument('--custom_test_dataset_path', default='', type=str,
                         help='path of custom test dataset')
     parser.add_argument('--dataset_return_name', default=False)
-    
+
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
-    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR100', 'CIFAR10', 'STL10', 'TinyImageNet', 'UH_mini', 'UH_main', 'NCT', 'BreakHis', 'MHIST', 'Custom'],
+    parser.add_argument('--dataset', default='CIFAR10',
+                        choices=['CIFAR100', 'CIFAR10', 'STL10', 'TinyImageNet', 'UH_mini', 'UH_main', 'NCT',
+                                 'BreakHis', 'MHIST', 'Custom'],
                         type=str, help='dataset name')
     parser.add_argument('--model-path', default='', type=str,
                         help='path of the fine-tuned model')
     parser.add_argument('--dataset_location', default='downloaded_datasets', type=str,
                         help='dataset location - dataset will be downloaded to this folder')
-    
+
     # related to linear evaluation
     parser.add_argument('--SiT_LinearEvaluation', default=0, type=int,
                         help='If true, the backbone of the system will be freezed')
@@ -55,7 +57,7 @@ def get_args_parser():
                         help='model acts like an feature extractor')
     parser.add_argument('--plot-ROC', action='store_true', default=False,
                         help='model acts like an feature extractor')
-    
+
     return parser
 
 
@@ -128,8 +130,8 @@ def main(args):
     checkpoint = torch.load(args.model_path, map_location='cpu')
     model.load_state_dict(checkpoint['model'])
     model.to(args.device)
-            
-    if not args.feature_extractor:     # normal analysis       
+
+    if not args.feature_extractor:  # normal analysis
         correct_test = 0
         total_test = 0
         predicted_output = []
@@ -155,7 +157,7 @@ def main(args):
         predicted_output = np.array(predicted_output)
         predicted_probs = np.array(predicted_probs)
         targets = np.array(targets)
-        
+
         if args.nb_classes == 2:  # binary classification evaluation
             print(classification_report(targets, predicted_output, digits=4))
             print("kappa score :", cohen_kappa_score(targets, predicted_output))
@@ -167,7 +169,7 @@ def main(args):
             print("auc macro :", roc_auc_score(targets, predicted_probs, average="macro", multi_class="ovr"))
             print("macro f1 :", f1_score(targets, predicted_output, average="macro"))
             print("weighted f1 :", f1_score(targets, predicted_output, average="weighted"))
-        
+
         if args.plot_ROC:
             skplt.metrics.plot_roc_curve(targets, predicted_probs)
             plt.savefig('ROCurve.png')
@@ -192,17 +194,16 @@ def main(args):
         tsne = TSNE()
         outputs = tsne.fit_transform(outputs)
 
-        df = pd.DataFrame(outputs, columns = ['x','y'])
+        df = pd.DataFrame(outputs, columns=['x', 'y'])
         df['target'] = targets
         df.to_csv('dataframe.csv')
-        
+
         colors = [int(i % args.nb_classes) for i in df['target']]
         plt.scatter(df['x'], df['y'], c=colors)
         plt.savefig('plot.png', dpi=300, bbox_inches='tight')
         plt.show()
-        
 
-        
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('SiT evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()

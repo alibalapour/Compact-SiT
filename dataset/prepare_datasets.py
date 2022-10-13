@@ -13,9 +13,6 @@ from torchvision.datasets import ImageFolder
 from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import create_transform
 
-from dataset.TinyImageNet import TinyImageNetDataset
-from dataset.CIFAR import CIFAR10, CIFAR100
-from dataset.STL10 import STL10
 from dataset.UH import UHDataset
 from dataset.NCT import NCTDataset
 from dataset.BreakHis import BreakHis
@@ -26,42 +23,7 @@ from dataset.CustomDataset import CustomDataset
 def build_dataset(is_train, args):
     transform = build_transform(is_train, args)
 
-    if args.dataset == 'CIFAR10':
-        dataset = CIFAR10(os.path.join(args.dataset_location, 'CIFAR10_dataset'),
-                          download=True, train=is_train, transform=transform,
-                          num_imgs_per_cat=args.num_imgs_per_cat,
-                          training_mode=args.training_mode)
-        nb_classes = 10
-
-
-    elif args.dataset == 'CIFAR100':
-        dataset = CIFAR100(os.path.join(args.dataset_location, 'CIFAR100_dataset'),
-                           download=True, train=is_train, transform=transform,
-                           num_imgs_per_cat=args.num_imgs_per_cat,
-                           training_mode=args.training_mode)
-
-        nb_classes = 100
-
-
-    elif args.dataset == 'STL10':
-        #### Note num_imgs_per_cat is not implemented in this dataset as it has unlabeled data
-        split = 'train+unlabeled' if args.training_mode == 'SSL' else 'train'
-        split = split if is_train else 'test'
-
-        dataset = STL10(root=os.path.join(args.dataset_location, 'STL10'),
-                        download=True, split=split, transform=transform,
-                        training_mode=args.training_mode)
-        nb_classes = 10
-
-    elif args.dataset == 'TinyImageNet':
-        mode = 'train' if is_train else 'val'
-        root_dir = os.path.join(args.dataset_location, 'TinyImageNet/tiny-imagenet-200/')
-        dataset = TinyImageNetDataset(root_dir=root_dir, download=True, mode=mode, transform=transform,
-                                      num_imgs_per_cat=args.num_imgs_per_cat,
-                                      training_mode=args.training_mode)
-        nb_classes = 200
-
-    elif args.dataset == 'UH_mini':  # Mini Dataset for SSL  - ~120k
+    if args.dataset == 'UH_mini':  # Mini Dataset for SSL  - ~120k
         if is_train:
             path = os.path.join(args.dataset_location, 'UH_mini_dataset')
             gdown.download(id='1-30No_EN3ISKvvAgmPq2PJerxaJOgMFb')
