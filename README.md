@@ -54,136 +54,39 @@ We used [CCT-14/7×2](https://arxiv.org/abs/2104.05704), with some modifications
 
 After pre-training, the model is fine-tuned on some famous histopathology datasets like [NCT-CRC-HE-100K](https://zenodo.org/record/1214456) and [BreakHis](https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/) and tested on them. Main focus of these tests are investigating the effect of pre-training on histopathology datasets and comparing cSiT model with other self-supervised methods used on histopathology image classification.
 
-<table class="tg">
-  <caption style="text-align:right"><b>Results of model on training on the three different mode on NCT-CRC Dataset</b></caption>
-<thead>
-  <tr>
-    <th class="tg-c3ow"></th>
-    <th class="tg-7btt">Accuracy</th>
-    <th class="tg-7btt">Macro Recall</th>
-    <th class="tg-fymr">Macro Precision</th>
-    <th class="tg-7btt">Macro F1</th>
-    <th class="tg-7btt">Weighted F1</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-7btt">SSL+FT</td>
-    <td class="tg-c3ow">0.94</td>
-    <td class="tg-c3ow">0.92</td>
-    <td class="tg-c3ow">0.92</td>
-    <td class="tg-c3ow">0.91</td>
-    <td class="tg-c3ow">0.94</td>
-  </tr>
-  <tr>
-    <td class="tg-7btt">SSL+LE</td>
-    <td class="tg-c3ow">0.91</td>
-    <td class="tg-c3ow">0.87</td>
-    <td class="tg-c3ow">0.89</td>
-    <td class="tg-c3ow">0.86</td>
-    <td class="tg-c3ow">0.9</td>
-  </tr>
-  <tr>
-    <td class="tg-7btt">FT</td>
-    <td class="tg-c3ow">0.84</td>
-    <td class="tg-c3ow">0.79</td>
-    <td class="tg-c3ow">0.82</td>
-    <td class="tg-c3ow">0.78</td>
-    <td class="tg-c3ow">0.84</td>
-  </tr>
-</tbody>
-</table>
+### Results of model on the three different mode on NCT-CRC Dataset
+|               |     Accuracy    |     Macro Recall    |     Macro Precision    |     Macro F1    |     Weighted F1    |     Kappa Score    |     Macro AUC    |
+|:-------------:|:---------------:|:-------------------:|:----------------------:|:---------------:|:------------------:|:------------------:|:----------------:|
+|       FT      |       0.84      |         0.79        |           0.82         |       0.78      |         0.84       |        0.818       |       0.980      |
+|     SSL+LE    |       0.91      |         0.87        |           0.89         |       0.86      |         0.9        |        0.890       |       0.985      |
+|     SSL+FT    |       0.94      |         0.92        |           0.92         |       0.91      |         0.94       |        0.928       |       0.993      |
 
 
-<table>
-  <caption style="text-align:right"><b>Results of model on training on the three different mode on BreakHis Dataset</b></caption>
-<thead>
-  <tr>
-    <th></th>
-    <th>Accuracy</th>
-    <th>Macro Recall</th>
-    <th>Macro Precision</th>
-    <th>Macro F1</th>
-    <th>Weighted F1</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>SSL+FT</td>
-    <td>0.88</td>
-    <td>0.87</td>
-    <td>0.87</td>
-    <td>0.87</td>
-    <td>0.88</td>
-  </tr>
-  <tr>
-    <td>SSL+LE</td>
-    <td>0.86</td>
-    <td>0.83</td>
-    <td>0.85</td>
-    <td>0.84</td>
-    <td>0.86</td>
-  </tr>
-  <tr>
-    <td>FT</td>
-    <td>0.85</td>
-    <td>0.82</td>
-    <td>0.84</td>
-    <td>0.83</td>
-    <td>0.85</td>
-  </tr>
-</tbody>
-</table>
+### Results of model on the three different mode on BreakHis Dataset (5-fold stratified cross validation)
+|               |     Accuracy(Mean)    |     Recall(Mean)    |     Macro F1(Mean)    |     Weighted F1(Mean)    |     Kappa Score(Mean)    |     Precision(Mean)    |
+|:-------------:|:---------------------:|:-------------------:|:---------------------:|:------------------------:|:------------------------:|:----------------------:|
+|       FT      |          0.857        |         0.93        |          0.82         |           0.852          |           0.642          |          0.866         |
+|     SSL+LE    |          0.848        |         0.932       |          0.812        |           0.845          |           0.625          |          0.858         |
+|     SSL+FT    |          0.937        |         0.952       |          0.928        |           0.938          |           0.8546         |          0.955         |
 
 
-<table>
-<thead>
-  <tr>
-    <th>Previous Works</th>
-    <th>Macro F1 on NCT-CRC</th>
-    <th>Macro F1 on BreakHis</th>
-    <th>Backbone</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>Autoencoder</td>
-    <td>37.0</td>
-    <td>36.0</td>
-    <td>ResNet50</td>
-  </tr>
-  <tr>
-    <td>Colorization</td>
-    <td>80.2</td>
-    <td>72.4</td>
-    <td>ResNet50</td>
-  </tr>
-  <tr>
-    <td>CPCv2</td>
-    <td>80.1</td>
-    <td>71.1</td>
-    <td>ResNet50</td>
-  </tr>
-  <tr>
-    <td>SSL Contrastive Learning</td>
-    <td>86.2</td>
-    <td>78.2</td>
-    <td>ResNet50</td>
-  </tr>
-  <tr>
-    <td>SSL Contrastive Learning - Best Model</td>
-    <td>91.4</td>
-    <td>80.2</td>
-    <td>ResNet34</td>
-  </tr>
-  <tr>
-    <td>Ours</td>
-    <td>93.0</td>
-    <td>87.0</td>
-    <td>ViT Compact</td>
-  </tr>
-</tbody>
-</table>
+### Results of model on the three different zoom settings of BreakHis Dataset
+|     Accuracy    |      40X     |      100X    |      200X    |      400X    |      Mean    |
+|:---------------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|         cSiT    |     93.78    |     93.12    |     94.28    |     94.39    |     93.89    |
+
+
+### Results of cSiT compared to basic SSL methods ([ref](https://arxiv.org/abs/2011.13971))
+|                     Models                   |     Macro F1 on      NCT-CRC    |     Macro F1 on BreakHis    |       Backbone     |
+|:--------------------------------------------:|:-------------------------------:|:---------------------------:|:------------------:|
+|                  Autoencoder                 |               37.0              |             36.0            |       ResNet50     |
+|                  Colorization                |               80.2              |             72.4            |       ResNet50     |
+|                     CPCv2                    |               80.1              |             71.1            |       ResNet50     |
+|            SSL Contrastive Learning          |               86.2              |             78.2            |       ResNet50     |
+|     SSL Contrastive Learning - Best Model    |               91.4              |             80.2            |       ResNet34     |
+|                     cSiT                    |               93.0              |            92.8 **          |     ViT Compact    |
+
+
 
 
 
