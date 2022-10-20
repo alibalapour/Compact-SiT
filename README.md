@@ -84,7 +84,7 @@ After pre-training, the model is fine-tuned on some famous histopathology datase
 |                     CPCv2                    |               80.1              |             71.1            |       ResNet50     |
 |            SSL Contrastive Learning          |               86.2              |             78.2            |       ResNet50     |
 |     SSL Contrastive Learning - Best Model    |               91.4              |             80.2            |       ResNet34     |
-|                     cSiT                    |               93.0              |            92.8 **          |     ViT Compact    |
+|                     cSiT                    |               93.0              |            92.8 **          |     CCT    |
 
 
 
