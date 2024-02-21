@@ -12,7 +12,7 @@ This repo is mainly adopted from [SiT Repository](https://github.com/Sara-Ahmed/
 # Contributions
 <ol>
   <li>Gathering a large and diverse dataset of unlabeled histopathology images (consists of ~600k images from famous histopathology datasets)</li>
-  <li>RUsing Compact Convolutional Transformer, which is a compact vision transformer, as a backbone</li>
+  <li>Using Compact Convolutional Transformer, which is a compact vision transformer, as a backbone</li>
   <li>Compared to SOTA self-supervised models, getting competitive results on two famous histopathology image classification datasets, NCT-CRC and BreakHis</li>
   <li>Testing the model in a semi-supervised setting on the NCT-CRC dataset</li>
   <li>Adding pieces of code for evaluating the results of the model</li>
